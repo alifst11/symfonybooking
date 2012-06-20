@@ -1,0 +1,100 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+# 
+djs:
+  url:    /djs/:type/:filename.js
+  param:  { module: djs, action: load }
+
+# SF Guard
+sf_guard_signin:
+  url:   /:sf_culture/login
+  param: { module: sfGuardAuth, action: signin }
+
+sf_guard_signout:
+  url:   /:sf_culture/logout
+  param: { module: sfGuardAuth, action: signout }
+
+sf_guard_password:
+  url:   /:sf_culture/request_password
+  param: { module: sfGuardAuth, action: password }
+
+
+# Profile 
+facebook_callback:
+  url: /fb_callback
+  param: { module: sfGuardAuth, action: FacebookCallback }
+
+profile_submit:
+ url: /profile/new/create
+ param: {module: public, action: Create}
+ requirements:
+    sf_method: [post]
+
+new_profile:
+  url: /:sf_culture/profile/new
+  param: {module: public, action: NewProfile }
+
+profile_home:
+  url: /:sf_culture/profile
+  param: {module: profile, action: Index}
+
+
+# Ajax 
+ajax_booking_check:
+  url: /ajxbookcheck
+  param: {module: booking, action: AjxCheckBooking}
+
+ajax_apartments:
+  url: /ajxapartments
+  param: {module: public, action: SugestedApartments}
+
+
+booking_submit_create:
+  url: /booking/new/create
+  param: {module:booking, action: CreateBooking}
+
+
+#Json
+json_dates:
+  url: /ajxdates/:id
+  param: {module: public, action: AjaxDates}
+
+
+# ______________________________
+search_public:
+  url: /:sf_culture/search
+  param: {module: public, action: Search}
+
+app_discovery:
+  url: /:sf_culture/explore
+  param: {module: public, action: Explore}
+
+new_booking:
+  url: /:sf_culture/booking/new
+  param: {module:booking, action: NewBooking}
+
+apartment_single:
+  url: /:sf_culture/apartment/:id
+  param: { module: public, action: ShowApartment }
+
+
+# default rules
+root:
+  url:   /
+  param: { module: public, action: Index }
+
+homepage:
+  url:   /:sf_culture
+  param: { module: public, action: Index }
+  requirements:
+    sf_culture: (?:en|hr)
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

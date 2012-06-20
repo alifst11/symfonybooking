@@ -1,0 +1,21 @@
+Apartment:
+  Apartment_1:
+    name: Prvi apartman
+    City: City_1
+    name: Ime apartmana 1
+    description: Opis apartmana
+    max_pax: 3
+    Feature: [ f6, f7, f8, f9 ]
+  Apartment_2:
+    name: Drugi apartman
+    City: City_2
+    name: Ime apartmana 2
+    description: Opis apartmana 2 
+    max_pax: 5
+    Feature: [ f4, f5, f6, f7, f8, f10 ]
+  Apartment_3:
+    name: Treci apartman
+    City: City_2
+    description: Opis apartmana 3
+    max_pax: 12
+    Feature: [ f1, f3, f5, f7, f11, f12 ]

@@ -1,0 +1,14 @@
+Booking:
+  actAs: { Timestampable: ~ }
+  columns:
+    apartment_id:  { type: integer, notnull: true }
+    client_id:          { type: integer, notnull: true }
+    date_from:      { type: date, notnull: true  }
+    date_to:          { type: date, notnull: true  }
+    pax:                { type: integer, notnull: true }
+    price:               { type: float, notnull: true }
+    valid:               { type: boolean, default: 0 }
+    canceled:         {type: boolean, default: 0 }
+  relations:
+    Apartment: { class: Apartment, type: one, local: apartment_id, foreign: id, foreignAlias: Apartment}
+    Client:         { class: sfGuardUser, type: one, local: client_id, foreign: id, foreignAlias: Client}

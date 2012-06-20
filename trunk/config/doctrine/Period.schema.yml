@@ -1,0 +1,9 @@
+Period:
+  actAs: { Timestampable: ~ }
+  columns:
+    apartment_id: {type: integer, notnull: true} 
+    date_from: {type: date, notnull: true }
+    date_to: {type: date, notnull: true }
+    price: {type: float, notnull: true}
+  relations:
+    Apartment: {class: Apartment, type: one, local: apartment_id, foreign: id, foreignAlias: Apartment}

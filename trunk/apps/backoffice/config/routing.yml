@@ -1,0 +1,71 @@
+feature:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                feature
+    module:               feature
+    prefix_path:          /features
+    column:               id
+    with_wildcard_routes: true
+
+period:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                period
+    module:               period
+    prefix_path:          /periods
+    column:               id
+    with_wildcard_routes: true
+
+booking:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                booking
+    module:               booking
+    prefix_path:          /bookings
+    column:               id
+    with_wildcard_routes: true
+
+apartment:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                apartment
+    module:               apartment
+    prefix_path:          /apartments
+    column:               id
+    with_wildcard_routes: true
+
+city:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                city
+    module:               city
+    prefix_path:          /cities
+    column:               id
+    with_wildcard_routes: true
+
+
+#Ajax get periods for apartment
+ajx_get_periods:
+  url: /ajx/periods/:id
+  param: {module: period, action: AjxGetPeriods }
+
+
+#New period for apartment
+add_period:
+  url: /apartments/:id/addperiod
+  param { module: apartment, action: addperiod }
+
+
+# default rules
+homepage:
+  url:   /
+  param: { module: apartment, action: index }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

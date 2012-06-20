@@ -1,0 +1,7 @@
+ApartmentFeature:
+  columns:
+    apartment_id: { type: integer, primary: true, notnull: true }
+    feature_id:        { type: integer, primary: true, notnull: true }
+  relations:
+    Apartment: { onDelete: CASCADE, local: apartment_id, foreign: id }
+    Feature:        { onDelete: CASCADE, local: feature_id, foreign: id }

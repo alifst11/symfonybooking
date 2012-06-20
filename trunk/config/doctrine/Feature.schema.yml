@@ -1,0 +1,6 @@
+Feature:
+  actAs: { Timestampable: ~ }
+  columns:
+    name: { type: string(255), notnull: true }
+    description: { type: string(255) }
+    icon_path: { type: string(255) }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file source-language="EN" target-language="hr" datatype="plaintext" original="messages" date="2012-06-20T11:50:27Z" product-name="messages">
+    <header/>
+    <body>
+      <trans-unit id="1">
+        <source>Register</source>
+        <target>Registracija</target>
+      </trans-unit>
+      <trans-unit id="2">
+        <source>Log-in</source>
+        <target>Prijava</target>
+      </trans-unit>
+      <trans-unit id="3">
+        <source>Signin</source>
+        <target>Prijava</target>
+      </trans-unit>
+      <trans-unit id="4">
+        <source>City</source>
+        <target>Grad</target>
+      </trans-unit>
+      <trans-unit id="5">
+        <source>Description</source>
+        <target>Opis</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

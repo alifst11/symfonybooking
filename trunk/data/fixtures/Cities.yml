@@ -1,0 +1,13 @@
+City:
+  City_1:
+    name: Split
+    description: Opis Splita
+  City_2:
+    name: Zagreb
+    description: Opis Zagreba
+  City_3:
+    name: Omis
+    description: Opis Omisa
+  City_4:
+    name: Dubrovnik
+    description: Opis Dubrovnika
