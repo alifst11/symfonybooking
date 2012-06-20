@@ -1,0 +1,5 @@
+City:
+  actAs: { Timestampable: ~ }
+  columns:
+    name: { type: string(255), notnull: true }
+    description: { type: string(255) }

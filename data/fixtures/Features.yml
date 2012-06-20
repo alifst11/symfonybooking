@@ -1,0 +1,25 @@
+Feature:
+  f1:
+    name: TV
+  f2:
+    name: Sat
+  f3:
+    name: Hairdryer
+  f4:
+    name: Balcony
+  f5:
+    name: Fridge
+  f6:
+    name: Minibar
+  f7:
+    name: Smoke
+  f8:
+    name: Pool
+  f9:
+    name: Phone
+  f10:
+    name: Aircondition
+  f11:
+    name: Brekfast
+  f12:
+    name: Sea View

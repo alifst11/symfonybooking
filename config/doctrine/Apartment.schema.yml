@@ -1,0 +1,13 @@
+Apartment:
+  actAs: {Timestampable: ~}
+  columns:
+    city_id: {type: integer, notnull: true}
+    max_pax: {type: integer, notnull: true}
+    name: {type: string(255), notnull: true}
+    description: {type: string(255)}
+    g_lat: {type: decimal(10), scale: 6 }
+    g_lon:  {type: decimal(10), scale: 6 }
+  relations:
+    City: {class: City, type: one, local: city_id, foreign: id, foreignAlias: City}
+    Period: {class: Period, type: many, local: id, foreign: apartment_id, foreignAlias: Periods}
+    Feature: {class: Feature, refClass: ApartmentFeature, local: apartment_id, foreign: feature_id, foreignAlias: Features}

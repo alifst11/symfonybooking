@@ -1,0 +1,43 @@
+sfGuardUser:
+  User_admin:
+    first_name:     John
+    last_name:      Doe
+    email_address:  john.doe@gmail.com
+    username:       admin
+    password:       admin
+    is_super_admin: true
+    Groups:         [Group_admin]
+  User_admin_2:
+    first_name:     Admin 2
+    last_name:      Nema
+    email_address:  admin@gmail.com
+    username:       admin2
+    password:       12345
+    is_super_admin: true
+    Groups:         [Group_admin]
+  User_client_1:
+    first_name:     Client 1
+    last_name:      Nema
+    email_address:  client@gmail.com
+    username:       client
+    password:       12345
+    is_super_admin: false
+    Groups:         [Group_client]
+
+sfGuardGroup:
+  Group_admin:
+    name:           admin
+    description:    Administrator group
+    Permissions:    [Permission_admin]
+  Group_client:
+    name:           client
+    description:    Client group
+    Permissions:    [Permission_client]
+
+sfGuardPermission:
+  Permission_admin:
+    name:           admin
+    description:    Administrator permission
+  Permission_client:
+    name:           client
+    description:    Client permission
