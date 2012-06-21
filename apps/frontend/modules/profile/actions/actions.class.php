@@ -24,7 +24,7 @@ public function preExecute(){
 
 	if ( ($sf_guard_user || $fbuser) === false ) {
 
-	   	 $this->getUser()->setFlash('notice', 'Log-in or register or connect with Facebook ...');
+	   	$this->getUser()->setFlash('notice', 'Log-in or register or connect with Facebook ...');
 	    	$this->form = new sfGuardUserForm();
 	    	$this->form->PublicForm();
 
@@ -45,7 +45,8 @@ public function preExecute(){
  /* Profile home  */
 public function executeIndex(sfWebRequest $request){
 
-	$this->fb_user = myUser::isFbUserAuthenticated();
+            $this->fb_user = myUser::isFbUserAuthenticated();
+            $this->guard_user = $this->getUser();
 
 }
 
