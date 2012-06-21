@@ -45,7 +45,7 @@ public function preExecute(){
  /* Profile home  */
 public function executeIndex(sfWebRequest $request){
 
-	$this->user = myUser::isFbUserAuthenticated();
+	$this->fb_user = myUser::isFbUserAuthenticated();
 
 }
 
