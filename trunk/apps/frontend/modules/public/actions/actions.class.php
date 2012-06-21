@@ -9,10 +9,10 @@
  */
 class publicActions extends sfActions {
  
-
+/*
 public function preExecute(){
 		
-   /*    if ( $this->getRequest()->hasParameter ('id') ) {
+       if ( $this->getRequest()->hasParameter ('id') ) {
 	 $get_apids = $this->getUser()->getAttribute('apids');
 	 (int)$id =  $this->getRequest()->getParameter('id'); 
 	 $this->getUser()->setAttribute('apids', ComparationEngine::SetCookie($get_apids, $id)) ;	
@@ -20,10 +20,10 @@ public function preExecute(){
 $session_data = $this->getUser()->getAttribute('apids');
 $this->getUser()->setAttribute('apids', $this->getRequest()->TrackVisitedApartments( $session_data ) ) ;
 
-*/
+
 
 }
-
+*/
 
 /*  Process new user form */
 protected function processForm(sfWebRequest $request, sfForm $form) {
