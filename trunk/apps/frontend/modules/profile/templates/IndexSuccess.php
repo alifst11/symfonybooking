@@ -1,9 +1,13 @@
 
 
 <hr>
-<h4 align="right">Title</h4>
+<p>Title</p>
 <br>
-<br>
+
+
+<?php echo($sf_data->getRaw('sf_user') ) ?>
+
+
 
 <?php if ($fb_user): ?>
 
@@ -15,7 +19,7 @@
 	<?php else: ?>
 
 
-
+          <h4> </h4> <br />
 
 
 <div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1"></div>
@@ -25,4 +29,6 @@
 
 
 
-<?php echo( var_dump($sf_data->getRaw('fb_user'))) ?>
+
+
+<?php // echo( var_dump($sf_data->getRaw('fb_user'))) ?>

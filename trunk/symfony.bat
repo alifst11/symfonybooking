@@ -31,7 +31,7 @@ rem echo -----------------------------------------------------------------------
 rem echo WARNING: Set environment var PHP_COMMAND to the location of your php.exe
 rem echo          executable (e.g. C:\PHP\php.exe).  (assuming php.exe on PATH)
 rem echo ------------------------------------------------------------------------
-set PHP_COMMAND=F:\xampp\php\php.exe
+set PHP_COMMAND=E:\xampp\php\php.exe
 goto init
 
 :cleanup
