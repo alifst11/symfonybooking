@@ -32,11 +32,11 @@
         });
 
         function login(){
-            window.location= "http://localhost/projekt/web/frontend_dev.php/fb_callback";
+            window.location= "http://localhost/symfonybooking/web/frontend_dev.php/fb_callback";
         }
 
         function logout(){
-           window.location= "http://localhost/projekt/web/frontend_dev.php";
+           window.location= "http://localhost/symfonybooking/web/frontend_dev.php";
         }
 
     // Additional initialization code here
