@@ -25,20 +25,30 @@ class searchActions extends sfActions {
 	public function executeSearchRequest(sfWebRequest $request) {
 
 		$errors		 = LinkParser::ValidateSearchRequest($request);
-		$this->errors 	 = $errors;	
-
+			
 			if ( count($errors) == 0 ) {
 				
 				$this->city = Doctrine_Core::getTable('City')->FindByNameLike($request->getParameter('city'));
-
 			}
-
-		$this->features = $request->getParameter('features');
-
-	
-		$this->apids = Doctrine_Core::getTable('ApartmentComparation')->getAppIdsByAllFeatures( $request->getParameter('features') );
-		$this->apps = Doctrine_Core::getTable('Apartment')->getApartmentsByFeatures( $request->getParameter('features') );
 		
+		$apartments = Doctrine_Core::getTable('Apartment')->getApartmentsByFeatures( $request->getParameter('features') );
+		
+		 if ($apartments === false) {
+		 	array_push($errors, 'No results');
+		      } else {
+		      	$this->apps = $apartments;
+		 }
+		
+		 $this->errors 	 = $errors;
+		 $this->apids = Doctrine_Core::getTable('ApartmentComparation')->getAppIdsByAllFeatures( $request->getParameter('features') );
+		// $this->features = $request->getParameter('features');
+		 
+		 $this->features = Doctrine_Core::getTable('Feature')
+		 		   ->createQuery('f')
+		 		   ->whereIn('f.id', $request->getParameter('features'))
+		 		   ->execute();
+
+			
 	}
 
 }

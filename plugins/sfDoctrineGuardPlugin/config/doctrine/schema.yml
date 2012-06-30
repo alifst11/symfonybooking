@@ -96,7 +96,7 @@ sfGuardUser:
     Bookings:
       class: Booking
       local: id
-      refClass: Booking
+      type: many
       foreign: client_id
       foreignAlias: Bookings
 

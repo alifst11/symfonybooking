@@ -11,4 +11,4 @@ Booking:
     canceled:         {type: boolean, default: 0 }
   relations:
     Apartment: { class: Apartment, type: one, local: apartment_id, foreign: id, foreignAlias: Apartment}
-    Client:         { class: sfGuardUser, type: one, local: client_id, foreign: id, foreignAlias: Client}
+    Client:         { class: sfGuardUser, type: one, local: client_id, foreign: id, foreignAlias: Bookings}

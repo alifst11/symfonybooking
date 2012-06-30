@@ -40,11 +40,12 @@ class profileActions extends sfActions {
 
 		$this->fb_user = myUser::isFbUserAuthenticated();
 	            
-		$this->user = $this->getUser()->getGuardUser();
+	            	$user = $this->getUser()->getGuardUser();
+		$this->user = $user;
 	            
-		if ( $this->user ){
-			$this->bookings = $this->user->Bookings;
-		}
+		if ( $user ){
+			$this->bookings = $user->Bookings;
+		 }
 
 	}
 

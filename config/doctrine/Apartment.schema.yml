@@ -12,3 +12,4 @@ Apartment:
     Period: {class: Period, type: many, local: id, foreign: apartment_id, foreignAlias: Periods}
     Feature: {class: Feature, refClass: ApartmentFeature, local: apartment_id, foreign: feature_id, foreignAlias: Features}
     Pictures: {class: Picture, type: many, local: id, foreign: apartment_id, foreignAlias: Pictures}
+    Bookings: {class: Booking, type: many, local: id, foreign: apartment_id }

@@ -15,7 +15,8 @@
  * @property Doctrine_Collection $Period
  * @property Doctrine_Collection $Feature
  * @property Doctrine_Collection $Pictures
- * @property Doctrine_Collection $Apartment
+ * @property Doctrine_Collection $Bookings
+ * @property Doctrine_Collection $ApartmentFeature
  * 
  * @method integer             getCityId()           Returns the current record's "city_id" value
  * @method integer             getMaxPax()           Returns the current record's "max_pax" value
@@ -27,8 +28,8 @@
  * @method Doctrine_Collection getPeriod()           Returns the current record's "Period" collection
  * @method Doctrine_Collection getFeature()          Returns the current record's "Feature" collection
  * @method Doctrine_Collection getPictures()         Returns the current record's "Pictures" collection
+ * @method Doctrine_Collection getBookings()         Returns the current record's "Bookings" collection
  * @method Doctrine_Collection getApartmentFeature() Returns the current record's "ApartmentFeature" collection
- * @method Doctrine_Collection getApartment()        Returns the current record's "Apartment" collection
  * @method Apartment           setCityId()           Sets the current record's "city_id" value
  * @method Apartment           setMaxPax()           Sets the current record's "max_pax" value
  * @method Apartment           setName()             Sets the current record's "name" value
@@ -39,34 +40,8 @@
  * @method Apartment           setPeriod()           Sets the current record's "Period" collection
  * @method Apartment           setFeature()          Sets the current record's "Feature" collection
  * @method Apartment           setPictures()         Sets the current record's "Pictures" collection
+ * @method Apartment           setBookings()         Sets the current record's "Bookings" collection
  * @method Apartment           setApartmentFeature() Sets the current record's "ApartmentFeature" collection
- * @method Apartment           setApartment()        Sets the current record's "Apartment" collectionFeature
- * @property Doctrine_Collection $Apartment
- * 
- * @method integer             getCityId()           Returns the current record's "city_id" value
- * @method integer             getMaxPax()           Returns the current record's "max_pax" value
- * @method string              getName()             Returns the current record's "name" value
- * @method string              getDescription()      Returns the current record's "description" value
- * @method decimal             getGLat()             Returns the current record's "g_lat" value
- * @method decimal             getGLon()             Returns the current record's "g_lon" value
- * @method City                getCity()             Returns the current record's "City" value
- * @method Doctrine_Collection getPeriod()           Returns the current record's "Period" collection
- * @method Doctrine_Collection getFeature()          Returns the current record's "Feature" collection
- * @method Doctrine_Collection getPictures()         Returns the current record's "Pictures" collection
- * @method Doctrine_Collection getApartmentFeature() Returns the current record's "ApartmentFeature" collection
- * @method Doctrine_Collection getApartment()        Returns the current record's "Apartment" collection
- * @method Apartment           setCityId()           Sets the current record's "city_id" value
- * @method Apartment           setMaxPax()           Sets the current record's "max_pax" value
- * @method Apartment           setName()             Sets the current record's "name" value
- * @method Apartment           setDescription()      Sets the current record's "description" value
- * @method Apartment           setGLat()             Sets the current record's "g_lat" value
- * @method Apartment           setGLon()             Sets the current record's "g_lon" value
- * @method Apartment           setCity()             Sets the current record's "City" value
- * @method Apartment           setPeriod()           Sets the current record's "Period" collection
- * @method Apartment           setFeature()          Sets the current record's "Feature" collection
- * @method Apartment           setPictures()         Sets the current record's "Pictures" collection
- * @method Apartment           setApartmentFeature() Sets the current record's "ApartmentFeature" collection
- * @method Apartment           setApartment()        Sets the current record's "Apartment" collection
  * 
  * @package    Adriatic.hr tecaj projekt
  * @subpackage model
@@ -127,11 +102,11 @@ abstract class BaseApartment extends sfDoctrineRecord
              'local' => 'id',
              'foreign' => 'apartment_id'));
 
-        $this->hasMany('ApartmentFeature', array(
+        $this->hasMany('Booking as Bookings', array(
              'local' => 'id',
              'foreign' => 'apartment_id'));
 
-        $this->hasMany('Booking as Apartment', array(
+        $this->hasMany('ApartmentFeature', array(
              'local' => 'id',
              'foreign' => 'apartment_id'));
 
