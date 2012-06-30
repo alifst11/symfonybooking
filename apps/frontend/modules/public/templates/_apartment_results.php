@@ -1,5 +1,5 @@
 
-	<?php echo print_r($sf_data->getRaw('params'))?>
+	<?php // echo print_r($sf_data->getRaw('params'))?>
 
 
 <div id="appresults" style="display:none;">
@@ -15,8 +15,8 @@
 		</div>
 	   	<div class="span3">
 	   		<p>
-	   			<strong>City: </strong><?php echo( $app->getCity() ) ?><br>
-	   			<strong>Description: </strong><?php echo( $app->getDescription() ) ?>
+	   			<strong><?php echo __('City') ?>: </strong><?php echo( $app->getCity() ) ?><br>
+	   			<strong><?php echo __('Description') ?>: </strong><?php echo( $app->getDescription() ) ?>
 	   		</p>
 	   	</div>
    	    </div><hr>

@@ -1,13 +1,7 @@
 <div>
 
-<br><br>
-
-<?php // echo ( print_r($sf_data->getRaw('results_simple') ) ) ?>
-
-<br><br>
-
-<h4>Things that you are looking for</h4>
-<p>Remove features that you don't want</p>
+	<h4><?php echo __('Things that you are looking for') ?></h4>
+	<p><?php echo __('Remove features that you dont want') ?></p>
 	
 	<?php foreach($apfeatures as $apfeature): ?>
 		<div class="sidebar_feature alert-success" id="<?php echo $apfeature['id'] ?>">
@@ -62,6 +56,8 @@
 </script>
 
 	<br>
-	<a href="../explore?" id="explore_link">Find more</a> like this in <a href="#"><?php echo( $app->getCity() ) ?></a>
+	<a href="../explore?" id="explore_link"><?php echo __('Explore by features') ?></a> <?php echo __('like this') ?>.
+	<hr>
+	<?php echo __('Browse apartments in ') ?> <?php echo(link_to( $app->getCity(), @apartments_city, array('id'=> $app->getCityId()) )) ?>
 
 </div>

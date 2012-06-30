@@ -1,12 +1,12 @@
 <br>
 
 <?php if (isset($user)): ?>
- Hello <?php echo($user->getName()) ?>. <br>
- <?php echo( link_to('Log-out', @sf_guard_signout)); ?>
+<?php echo __('Hello') ?> <?php echo($user->getName()) ?>. <br>
+ <?php echo( link_to( __('Log-out'), @sf_guard_signout)); ?>
 <?php endif; ?>
 
 <?php if (isset($user)===false): ?>
-  <?php echo(link_to('Log-in', @sf_guard_signin )) ?> or <?php echo(link_to(' create account.', @new_profile )) ?> 
+  <?php echo(link_to( __('Log-in'), @sf_guard_signin )) ?> <?php echo __('or') ?> <?php echo(link_to( __('create account'), @new_profile )) ?> 
 <?php endif; ?>
 
 <br><br><br>

@@ -3,9 +3,9 @@
 /**
  * ApartmentFeature filter form base class.
  *
- * @package    sf_sandbox
+ * @package    Adriatic.hr tecaj projekt
  * @subpackage filter
- * @author     Your name here
+ * @author     Tino
  * @version    SVN: $Id: sfDoctrineFormFilterGeneratedTemplate.php 29570 2010-05-21 14:49:47Z Kris.Wallsmith $
  */
 abstract class BaseApartmentFeatureFormFilter extends BaseFormFilterDoctrine

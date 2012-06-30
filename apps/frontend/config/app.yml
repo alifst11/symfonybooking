@@ -6,3 +6,18 @@ all:
   sf_guard_plugin:
     success_signin_url:      @profile_home
     success_signout_url:    @homepage
+  features_data:
+    all:
+      1: Minibar
+      2: Smoke
+      3: Pool
+      4: Phone
+      5: Balcony
+      6: Fridge
+      7: Aircondition
+      8: TV
+      9: Hairdryer
+      10: Brekfast
+      11: Sea View
+      12: Sat
+

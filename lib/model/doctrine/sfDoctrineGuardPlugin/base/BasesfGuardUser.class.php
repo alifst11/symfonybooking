@@ -17,6 +17,7 @@
  * @property timestamp $last_login
  * @property Doctrine_Collection $Groups
  * @property Doctrine_Collection $Permissions
+ * @property Doctrine_Collection $Bookings
  * @property Doctrine_Collection $sfGuardUserPermission
  * @property Doctrine_Collection $sfGuardUserGroup
  * @property sfGuardRememberKey $RememberKeys
@@ -35,6 +36,7 @@
  * @method timestamp             getLastLogin()             Returns the current record's "last_login" value
  * @method Doctrine_Collection   getGroups()                Returns the current record's "Groups" collection
  * @method Doctrine_Collection   getPermissions()           Returns the current record's "Permissions" collection
+ * @method Doctrine_Collection   getBookings()              Returns the current record's "Bookings" collection
  * @method Doctrine_Collection   getSfGuardUserPermission() Returns the current record's "sfGuardUserPermission" collection
  * @method Doctrine_Collection   getSfGuardUserGroup()      Returns the current record's "sfGuardUserGroup" collection
  * @method sfGuardRememberKey    getRememberKeys()          Returns the current record's "RememberKeys" value
@@ -52,15 +54,16 @@
  * @method sfGuardUser           setLastLogin()             Sets the current record's "last_login" value
  * @method sfGuardUser           setGroups()                Sets the current record's "Groups" collection
  * @method sfGuardUser           setPermissions()           Sets the current record's "Permissions" collection
+ * @method sfGuardUser           setBookings()              Sets the current record's "Bookings" collection
  * @method sfGuardUser           setSfGuardUserPermission() Sets the current record's "sfGuardUserPermission" collection
  * @method sfGuardUser           setSfGuardUserGroup()      Sets the current record's "sfGuardUserGroup" collection
  * @method sfGuardUser           setRememberKeys()          Sets the current record's "RememberKeys" value
  * @method sfGuardUser           setForgotPassword()        Sets the current record's "ForgotPassword" value
  * @method sfGuardUser           setClient()                Sets the current record's "Client" collection
  * 
- * @package    sf_sandbox
+ * @package    Adriatic.hr tecaj projekt
  * @subpackage model
- * @author     Your name here
+ * @author     Tino
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 abstract class BasesfGuardUser extends sfDoctrineRecord
@@ -68,11 +71,6 @@ abstract class BasesfGuardUser extends sfDoctrineRecord
     public function setTableDefinition()
     {
         $this->setTableName('sf_guard_user');
-         
-         $this->hasColumn('facebook_id', 'bigint', null, array(
-             'type' => 'bigint',
-             ));
-
         $this->hasColumn('first_name', 'string', 255, array(
              'type' => 'string',
              'length' => 255,
@@ -140,6 +138,11 @@ abstract class BasesfGuardUser extends sfDoctrineRecord
              'refClass' => 'sfGuardUserPermission',
              'local' => 'user_id',
              'foreign' => 'permission_id'));
+
+        $this->hasMany('Booking as Bookings', array(
+             'refClass' => 'Booking',
+             'local' => 'id',
+             'foreign' => 'client_id'));
 
         $this->hasMany('sfGuardUserPermission', array(
              'local' => 'id',

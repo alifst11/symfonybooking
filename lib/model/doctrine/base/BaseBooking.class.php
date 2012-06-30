@@ -15,31 +15,34 @@
  * @property boolean $canceled
  * @property Apartment $Apartment
  * @property sfGuardUser $Client
+ * @property Doctrine_Collection $Bookings
  * 
- * @method integer     getApartmentId()  Returns the current record's "apartment_id" value
- * @method integer     getClientId()     Returns the current record's "client_id" value
- * @method date        getDateFrom()     Returns the current record's "date_from" value
- * @method date        getDateTo()       Returns the current record's "date_to" value
- * @method integer     getPax()          Returns the current record's "pax" value
- * @method float       getPrice()        Returns the current record's "price" value
- * @method boolean     getValid()        Returns the current record's "valid" value
- * @method boolean     getCanceled()     Returns the current record's "canceled" value
- * @method Apartment   getApartment()    Returns the current record's "Apartment" value
- * @method sfGuardUser getClient()       Returns the current record's "Client" value
- * @method Booking     setApartmentId()  Sets the current record's "apartment_id" value
- * @method Booking     setClientId()     Sets the current record's "client_id" value
- * @method Booking     setDateFrom()     Sets the current record's "date_from" value
- * @method Booking     setDateTo()       Sets the current record's "date_to" value
- * @method Booking     setPax()          Sets the current record's "pax" value
- * @method Booking     setPrice()        Sets the current record's "price" value
- * @method Booking     setValid()        Sets the current record's "valid" value
- * @method Booking     setCanceled()     Sets the current record's "canceled" value
- * @method Booking     setApartment()    Sets the current record's "Apartment" value
- * @method Booking     setClient()       Sets the current record's "Client" value
+ * @method integer             getApartmentId()  Returns the current record's "apartment_id" value
+ * @method integer             getClientId()     Returns the current record's "client_id" value
+ * @method date                getDateFrom()     Returns the current record's "date_from" value
+ * @method date                getDateTo()       Returns the current record's "date_to" value
+ * @method integer             getPax()          Returns the current record's "pax" value
+ * @method float               getPrice()        Returns the current record's "price" value
+ * @method boolean             getValid()        Returns the current record's "valid" value
+ * @method boolean             getCanceled()     Returns the current record's "canceled" value
+ * @method Apartment           getApartment()    Returns the current record's "Apartment" value
+ * @method sfGuardUser         getClient()       Returns the current record's "Client" value
+ * @method Doctrine_Collection getBookings()     Returns the current record's "Bookings" collection
+ * @method Booking             setApartmentId()  Sets the current record's "apartment_id" value
+ * @method Booking             setClientId()     Sets the current record's "client_id" value
+ * @method Booking             setDateFrom()     Sets the current record's "date_from" value
+ * @method Booking             setDateTo()       Sets the current record's "date_to" value
+ * @method Booking             setPax()          Sets the current record's "pax" value
+ * @method Booking             setPrice()        Sets the current record's "price" value
+ * @method Booking             setValid()        Sets the current record's "valid" value
+ * @method Booking             setCanceled()     Sets the current record's "canceled" value
+ * @method Booking             setApartment()    Sets the current record's "Apartment" value
+ * @method Booking             setClient()       Sets the current record's "Client" value
+ * @method Booking             setBookings()     Sets the current record's "Bookings" collection
  * 
- * @package    sf_sandbox
+ * @package    Adriatic.hr tecaj projekt
  * @subpackage model
- * @author     Your name here
+ * @author     Tino
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 abstract class BaseBooking extends sfDoctrineRecord
@@ -89,6 +92,11 @@ abstract class BaseBooking extends sfDoctrineRecord
              'foreign' => 'id'));
 
         $this->hasOne('sfGuardUser as Client', array(
+             'local' => 'client_id',
+             'foreign' => 'id'));
+
+        $this->hasMany('sfGuardUser as Bookings', array(
+             'refClass' => 'Booking',
              'local' => 'client_id',
              'foreign' => 'id'));
 

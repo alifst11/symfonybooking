@@ -30,6 +30,7 @@ jQuery(document).ready(function($) {
         numberOfMonths: 1,
         dateFormat: "yy-mm-dd",
         firstDay: 1,
+        
         altField: "#date_from",
         
             onSelect: function(date, inst) { 

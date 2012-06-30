@@ -5,9 +5,9 @@
  *
  * @method sfGuardUser getObject() Returns the current form's model object
  *
- * @package    sf_sandbox
+ * @package    Adriatic.hr tecaj projekt
  * @subpackage form
- * @author     Your name here
+ * @author     Tino
  * @version    SVN: $Id: sfDoctrineFormGeneratedTemplate.php 29553 2010-05-20 14:33:00Z Kris.Wallsmith $
  */
 abstract class BasesfGuardUserForm extends BaseFormDoctrine
@@ -30,6 +30,7 @@ abstract class BasesfGuardUserForm extends BaseFormDoctrine
       'updated_at'       => new sfWidgetFormDateTime(),
       'groups_list'      => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardGroup')),
       'permissions_list' => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardPermission')),
+      'bookings_list'    => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Booking')),
     ));
 
     $this->setValidators(array(
@@ -48,6 +49,7 @@ abstract class BasesfGuardUserForm extends BaseFormDoctrine
       'updated_at'       => new sfValidatorDateTime(),
       'groups_list'      => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardGroup', 'required' => false)),
       'permissions_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'sfGuardPermission', 'required' => false)),
+      'bookings_list'    => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Booking', 'required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(
@@ -85,12 +87,18 @@ abstract class BasesfGuardUserForm extends BaseFormDoctrine
       $this->setDefault('permissions_list', $this->object->Permissions->getPrimaryKeys());
     }
 
+    if (isset($this->widgetSchema['bookings_list']))
+    {
+      $this->setDefault('bookings_list', $this->object->Bookings->getPrimaryKeys());
+    }
+
   }
 
   protected function doSave($con = null)
   {
     $this->saveGroupsList($con);
     $this->savePermissionsList($con);
+    $this->saveBookingsList($con);
 
     parent::doSave($con);
   }
@@ -168,6 +176,44 @@ abstract class BasesfGuardUserForm extends BaseFormDoctrine
     if (count($link))
     {
       $this->object->link('Permissions', array_values($link));
+    }
+  }
+
+  public function saveBookingsList($con = null)
+  {
+    if (!$this->isValid())
+    {
+      throw $this->getErrorSchema();
+    }
+
+    if (!isset($this->widgetSchema['bookings_list']))
+    {
+      // somebody has unset this widget
+      return;
+    }
+
+    if (null === $con)
+    {
+      $con = $this->getConnection();
+    }
+
+    $existing = $this->object->Bookings->getPrimaryKeys();
+    $values = $this->getValue('bookings_list');
+    if (!is_array($values))
+    {
+      $values = array();
+    }
+
+    $unlink = array_diff($existing, $values);
+    if (count($unlink))
+    {
+      $this->object->unlink('Bookings', array_values($unlink));
+    }
+
+    $link = array_diff($values, $existing);
+    if (count($link))
+    {
+      $this->object->link('Bookings', array_values($link));
     }
   }
 

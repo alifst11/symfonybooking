@@ -3,7 +3,7 @@
 <div class="row">
 
 <div class="span4">
-	<br><h4 align="middle">Registration </h4><br>
+	<br><h4 align="middle"> <?php echo __('Registration') ?> </h4><br>
 	<form action="<?php echo url_for('@profile_submit') ?>" method="post" name="new_user" class="well">
 	  <table>
 	    <?php echo $form; ?>
@@ -19,7 +19,7 @@
 </div>
 
 <div class="span4">
-	<br><h4 align="middle">Log-in </h4><br>
+	<br><h4 align="middle"><?php echo __('Log-in') ?></h4><br>
 	<form action="<?php echo url_for('@sf_guard_signin') ?>" method="post" class="well">
 	  <table>
 	    <?php echo $form_2; ?>

@@ -4,14 +4,15 @@
     <title>_/ \_</title>
     <?php include_http_metas() ?>
     <?php include_metas() ?>
-    <?php echo stylesheet_tag('bootstrap') ?>
+    <?php echo  stylesheet_tag('bootstrap') ?>
     <?php echo stylesheet_tag('bootstrap-responsive') ?>
-    <?php echo stylesheet_tag('jquery-ui-1.8.20.custom.css') ?>
+    <?php echo stylesheet_tag('http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/smoothness/jquery-ui.css') ?>
     <?php echo javascript_include_tag('https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js') ?>
     <?php echo javascript_include_tag('https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js') ?>
     <?php echo javascript_include_tag('http://maps.googleapis.com/maps/api/js?sensor=false') ?>
     <?php echo javascript_include_tag('jquery.knob.js') ?>
     <?php echo javascript_include_tag('bootstrap.js') ?>
+    <?php echo javascript_include_tag('jquery.tagcanvas.js') ?>
     <?php include_javascripts() ?>
 <script>
   window.fbAsyncInit = function() {
@@ -36,7 +37,7 @@
         }
 
         function logout(){
-           window.location= "http://localhost/symfonybooking/web/frontend_dev.php";
+           window.location= "http://localhost/symfonybooking/web/frontend_dev.php/en/logout";
         }
 
     // Additional initialization code here

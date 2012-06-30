@@ -22,9 +22,9 @@
  * @method Feature             setFeatures()         Sets the current record's "Features" collection
  * @method Feature             setApartmentFeature() Sets the current record's "ApartmentFeature" collection
  * 
- * @package    sf_sandbox
+ * @package    Adriatic.hr tecaj projekt
  * @subpackage model
- * @author     Your name here
+ * @author     Tino
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 abstract class BaseFeature extends sfDoctrineRecord

@@ -13,4 +13,21 @@ class ApartmentForm extends BaseApartmentForm
   public function configure()
   {
   }
+
+
+public function PublicSearch(){
+
+  $this-> setWidgets(array(
+    'date_from'                 => new sfWidgetFormInput(array(), array('class'=>'span2') ),
+    'date_to' 		=> new sfWidgetFormInput(array(), array('class'=>'span2') ),
+    'city'     		=> new sfWidgetFormInput(array(), array('class'=>'span2') ),
+    'f_want'         		=> new sfWidgetFormInput(array(), array() ),
+    'f_dont'            	=> new sfWidgetFormInput(array(), array() ),
+  ));
+
+
+}
+
+
+
 }
