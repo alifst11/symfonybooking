@@ -10,6 +10,7 @@ class ApartmentTable extends Doctrine_Table {
 
 	/* Returns Bookings in period */
 	/* BUG: ako je period preko nekog bookinga !!! */
+	
 	public static function BookingsInPeriod($app_id, $date_from, $date_to) {
 		  
 		 $q = Doctrine_Core::getTable('Booking')->createQuery('a')
@@ -48,10 +49,20 @@ class ApartmentTable extends Doctrine_Table {
 
 		$apids = Doctrine_Core::getTable('ApartmentComparation')->getAppIdsByAllFeatures($features);
 		
-		$q = $this->createQuery('a')
-			->whereIn('a.id', $apids);
 
-		return  $q->execute();
+		if ( count($apids) == 0 ){
+			
+			return false;
+		     
+		     } else {
+			
+			$q = $this->createQuery('a')
+			                  ->whereIn('a.id', $apids);
+
+			return  $q->execute();
+		}
+
+		
 	}
 
 	/**

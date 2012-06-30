@@ -22,7 +22,6 @@
  * @property Doctrine_Collection $sfGuardUserGroup
  * @property sfGuardRememberKey $RememberKeys
  * @property sfGuardForgotPassword $ForgotPassword
- * @property Doctrine_Collection $Client
  * 
  * @method string                getFirstName()             Returns the current record's "first_name" value
  * @method string                getLastName()              Returns the current record's "last_name" value
@@ -41,7 +40,6 @@
  * @method Doctrine_Collection   getSfGuardUserGroup()      Returns the current record's "sfGuardUserGroup" collection
  * @method sfGuardRememberKey    getRememberKeys()          Returns the current record's "RememberKeys" value
  * @method sfGuardForgotPassword getForgotPassword()        Returns the current record's "ForgotPassword" value
- * @method Doctrine_Collection   getClient()                Returns the current record's "Client" collection
  * @method sfGuardUser           setFirstName()             Sets the current record's "first_name" value
  * @method sfGuardUser           setLastName()              Sets the current record's "last_name" value
  * @method sfGuardUser           setEmailAddress()          Sets the current record's "email_address" value
@@ -59,7 +57,6 @@
  * @method sfGuardUser           setSfGuardUserGroup()      Sets the current record's "sfGuardUserGroup" collection
  * @method sfGuardUser           setRememberKeys()          Sets the current record's "RememberKeys" value
  * @method sfGuardUser           setForgotPassword()        Sets the current record's "ForgotPassword" value
- * @method sfGuardUser           setClient()                Sets the current record's "Client" collection
  * 
  * @package    Adriatic.hr tecaj projekt
  * @subpackage model
@@ -140,7 +137,6 @@ abstract class BasesfGuardUser extends sfDoctrineRecord
              'foreign' => 'permission_id'));
 
         $this->hasMany('Booking as Bookings', array(
-             'refClass' => 'Booking',
              'local' => 'id',
              'foreign' => 'client_id'));
 
@@ -159,10 +155,6 @@ abstract class BasesfGuardUser extends sfDoctrineRecord
         $this->hasOne('sfGuardForgotPassword as ForgotPassword', array(
              'local' => 'id',
              'foreign' => 'user_id'));
-
-        $this->hasMany('Booking as Client', array(
-             'local' => 'id',
-             'foreign' => 'client_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable(array(
              ));

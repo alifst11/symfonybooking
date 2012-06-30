@@ -11,18 +11,32 @@
     <?php else:  ?>
 
 
-	<?php // echo($city->getName()) ?>
-	<strong>Selected features:</strong>
-	<?php echo(print_r($sf_data->getRaw('features'))) ?>
-	<hr>
-	<strong>Apids:</strong>
-	<?php echo(print_r($sf_data->getRaw('apids'))) ?>
-	<hr>
-	<strong>Apartments:</strong>
 
-	<?php echo include_partial('public/apartment_results',array('apps'=>$apps, 'params'=>array() )); ?>
+	<div class="row">
 
-	<?php //echo(print_r($sf_data->getRaw('apps'))) ?>
+		<div class="span4">
+
+			<h4>Results </h4><br>
+			<?php echo include_partial('public/apartment_results',array('apps'=>$apps, 'params'=>array() )); ?>
+
+		</div>
+
+		<div class="span3">
+
+
+			Apartments in <strong><?php echo($city->getName()) ?></strong> with this features:
+
+			<?php foreach ($features as $feature): ?>
+
+				<?php echo ($feature->getName()  )?> <br>
+		
+			<?php endforeach; ?>
+
+		</div>
+
+	</div>
+
+
 <?php endif; ?>
 
 
