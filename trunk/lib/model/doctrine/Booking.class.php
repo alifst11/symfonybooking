@@ -14,87 +14,87 @@ class Booking extends BaseBooking {
 
 
 
-/* If this function return booking object, proceed to payement */
-public function StartBooking(Apartment $app, $pax) {
+	/* If this function return booking object, proceed to payement */
+	public function StartBooking(Apartment $app, $pax) {
 
-	   $valid = self::CheckBookingPossibility($app, $pax);
+		$valid = self::CheckBookingPossibility($app, $pax);
 
-		  if ( $valid ) {
+			if ( $valid ) {
+				return $this;
+			        } else {
+				return false;
+				}
+	}
+
+
+	/* Calculates price and save booking if booking is valid */
+
+	public function DoBooking( $client ) {
+			
+		if ( $this->CheckBookingPossibility($this->Apartment, $this->pax) ) {
+
+			$this->price = Booking::CalculatePrice($this->Apartment, $this->getDateFrom(), $this->getDateTo());
+			$this->Client = $client;
+			$this->save();
+							
 			return $this;
-		     } else {
+
+		       } else {
+
 			return false;
-		  }
-}
+		}
+
+	}
 
 
-/* Calculates price and save booking if booking is valid */
-public function DoBooking( $client ) {
-    
-      if ( $this->CheckBookingPossibility($this->Apartment, $this->pax) ) {
+	/* Returns booking object if booking is possibile else return false */
+	public function CheckBookingPossibility(Apartment $app, $pax) {
 
-            $this->price = Booking::CalculatePrice($this->Apartment, $this->getDateFrom(), $this->getDateTo());
-            $this->Client = $client;
-            $this->save();
-            
-            return $this;
+			/* Avalibility check. Expecting TRUE or FALSE  */
+			$avalibility = $app->CheckBookingsInPeriod($this->date_from, $this->date_to);
+			
+			/* Are dates valid for individual apartment ? */
+			$dates = true;
 
-         } else {
-
-            return false;
-      }
-
-}
+			/* Minimum or maximum pax for individual apartment or ... ? */
+			$pax_valid = false;
+		
+		 	if ( ($pax >= 1)  && ($pax <= $app->getMaxPax()) ) {
+				$pax_valid = true;
+			}
 
 
-/* Returns booking object if booking is possibile else return false */
-public function CheckBookingPossibility(Apartment $app, $pax) {
-
-    /* Avalibility check. Expecting TRUE or FALSE  */
-    $avalibility = $app->CheckBookingsInPeriod($this->date_from, $this->date_to);
-    
-    /* Are dates valid for individual apartment ? */
-    $dates = true;
-
-    /* Minimum or maximum pax for individual apartment or ... ? */
-    $pax = true;
-  // if ($pax > 1 && $pax < 20) {
-  //        $pax = true;
-  //  }
-
-    if ( ($dates===true) && ($avalibility===false) && ($pax===true) ) {
-            return $this;
-         } else {
-            return false;
-       }
-
-}
+			if ( ($dates===true) && ($avalibility===false) && ($pax_valid === true) ) {
+						return $this;
+				       } else {
+						return false;
+				 }
+	}
 
 
-public static function CalculatePrice(Apartment $app, $date_from, $date_to) {
+	public static function CalculatePrice(Apartment $app, $date_from, $date_to) {
 
-    $price = 0;
-    $from  =  strtotime($date_from);
-    $to      =  strtotime($date_to);
-    $periods = $app->Period;
+		$price  = 0;
+		$from   =  strtotime($date_from);
+		$to     =  strtotime($date_to);
+		$periods = $app->Period;
 
-          $start_date = $from;
+		$start_date = $from;
 
-           while ( $start_date <= $to ) {
-               
-                    foreach ($periods as $period) {
-                        
-                            if ( in_array($start_date, $period->getDatesBetween()) ) {
-                                        $price += ( $period->getPrice() );
-                                }
+			while ( $start_date <= $to ) {
+								 
+				foreach ($periods as $period) {
+													
+					if ( in_array($start_date, $period->getDatesBetween()) ) {
+						$price += ( $period->getPrice() );
+								}
 
-                     } 
+				} 
 
-                    $start_date += 86400;
-           }
+			     $start_date += 86400;
+			}
 
-      return $price;
-}
-
-
+		return $price;
+	}
 
 }

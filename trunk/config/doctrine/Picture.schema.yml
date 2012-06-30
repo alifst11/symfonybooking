@@ -1,0 +1,11 @@
+Picture:
+  actAs: {Timestampable: ~}
+  columns:
+    apartment_id: {type: integer, notnull: true}
+    path: {type: string(255), notnull: true}
+    type: {type: string(255), notnull: true}
+    name: {type: string(255), notnull: true}
+    description: {type: string(255)}
+
+  relations:
+    Apartment: {class: Apartment, type: one, local: apartment_id, foreign: id, foreignAlias: Pictures}

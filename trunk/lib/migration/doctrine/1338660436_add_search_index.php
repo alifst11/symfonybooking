@@ -25,6 +25,7 @@ public function up() {
       for ($i=1; $i < 50 ; $i++) { 
 	  $this->addColumn( 'apartment_comparation', 'feature_' . $i, 'boolean', ' ', array( 'default' => '0' ) );
 	}
+  
  }
 
 

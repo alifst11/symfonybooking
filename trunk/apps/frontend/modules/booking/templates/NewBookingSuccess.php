@@ -1,27 +1,27 @@
 <div class="row">
 	<div class="span3">
-		<h4 align="middle"><?php echo ($apartment->getName()) ?> is avalible from <?php echo($booking->getDateFrom()) ?> till <?php echo($booking->getDateTo()) ?>.  </h4>
+		<h4 align="middle"><?php echo ($apartment->getName()) ?> <?php echo __('is avalible from') ?> <?php echo($booking->getDateFrom()) ?> <?php echo __('till') ?> <?php echo($booking->getDateTo()) ?>.  </h4>
 	        <table class="table">
 		 <tbody>
 			<tr>
-			      <td>Apartment</td>
+			      <td><?php echo __('Apartment') ?></td>
 			      <td><?php echo($apartment->getName()) ?></td>
 			</tr>
 			<tr>
-			      <td>Date from</td>
+			      <td><?php echo __('Date from') ?></td>
 			      <td><?php echo($booking->getDateFrom()) ?></td>
 			</tr>
 			<tr>
-			      <td>Date to</td>
+			      <td><?php echo __('Date to') ?></td>
 			      <td><?php echo($booking->getDateTo()) ?></td>
 			</tr>
 			<tr>
-			      <td>Persons</td>
+			      <td><?php echo __('Persons') ?></td>
 			      <td><?php echo($pax) ?></td>
 			</tr>
 			<tr>
-			      <td><strong>Total price</strong></td>
-			      <td><strong><?php echo($price) ?></strong></td>
+			      <td><strong><?php echo __('Total price') ?></strong></td>
+			      <td><strong><?php echo($price) ?></strong> €</td>
 			</tr>
 	 	 </tbody>
 	         </table>
@@ -30,15 +30,15 @@
 			<form action="#" id="payment_form" class="well" >
 				<?php echo $form->renderHiddenFields(true) ?>
 
-					<h4>Payment option </h4> <?php echo $form['option']; ?> <br>
+					<h4><?php echo __('Payment option') ?> </h4> <?php echo $form['option']; ?> <br>
 					<br>
 
 					<div id="card_no_div">
-					   <h4>Card number </h4> <?php echo $form['card_no']; ?> <br>
+					   <h4><?php echo __('Card number') ?> </h4> <?php echo $form['card_no']; ?> <br>
 					</div>
 					<br>
 
-				<input type="button" id="btn_payment_form"  value="Confirm reservation" class="btn btn-small" />
+				<input type="button" id="btn_payment_form"  value="<?php echo __('Confirm reservation') ?>" class="btn btn-small" />
 			</form>
 		</div>
 		

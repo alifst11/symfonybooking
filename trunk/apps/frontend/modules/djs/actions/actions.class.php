@@ -10,25 +10,23 @@
  */
 class djsActions extends sfActions{
 
-public function executeLoad(sfWebRequest $request){
 
-        $this->setLayout(false);
-         
-        $this->getResponse()->setHttpHeader('Content-Type', 'text/javascript');
-         
-        switch ($request->getParameter('type')){
-             case 'global':
-                $this->setTemplate($request->getParameter('filename'), dirname('SF_ROOT_DIR') . '/../' );
-                break;
-            default:
-                $this->setTemplate($request->getParameter('filename'),  $request->getParameter('type') );
-                break;    
-          }
-         
-        return ".js";
-    }
+	public function executeLoad(sfWebRequest $request){
 
-
-
+		$this->setLayout(false);
+			 
+			$this->getResponse()->setHttpHeader('Content-Type', 'text/javascript');
+			 
+			switch ($request->getParameter('type')){
+				 case 'global':
+					$this->setTemplate($request->getParameter('filename'), dirname('SF_ROOT_DIR') . '/../' );
+					break;
+				default:
+					$this->setTemplate($request->getParameter('filename'),  $request->getParameter('type') );
+					break;    
+			  }
+			 
+		return ".js";
+	}
 
 }

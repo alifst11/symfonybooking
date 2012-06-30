@@ -41,6 +41,6 @@ all:
       cache_key_use_vary_headers: true
       cache_key_use_host_name:    true
 
-   #Comparation engine
+# ActivityTracking class that extends sfWebRequest to do tracking actions
   request:
-    class: ComparationEngine
+    class: ActivityTracking

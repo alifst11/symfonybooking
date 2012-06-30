@@ -22,9 +22,9 @@
  * @method Period    setPrice()        Sets the current record's "price" value
  * @method Period    setApartment()    Sets the current record's "Apartment" value
  * 
- * @package    sf_sandbox
+ * @package    Adriatic.hr tecaj projekt
  * @subpackage model
- * @author     Your name here
+ * @author     Tino
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 abstract class BasePeriod extends sfDoctrineRecord

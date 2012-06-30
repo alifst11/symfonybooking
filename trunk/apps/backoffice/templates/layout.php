@@ -16,6 +16,7 @@
         <?php echo link_to ( 'Groups' , @sf_guard_group) ?> |
         <?php echo link_to ( 'Permisions' , @sf_guard_permission) ?> |
         <?php echo link_to ( 'Apartments' , @apartment) ?> | 
+        <?php echo link_to ( 'Pictures' , @picture) ?> | 
         <?php echo link_to ( 'Periods' , @period) ?> | 
         <?php echo link_to ( 'Features' , @feature) ?> | 
         <?php echo link_to ( 'Bookings' , @booking) ?> | 

@@ -10,8 +10,8 @@
  */
 class sfGuardUserForm extends PluginsfGuardUserForm {
   
-	public function configure(){
-	}
+public function configure(){
+}
 
 
 	/* Public booking form */

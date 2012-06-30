@@ -8,27 +8,22 @@
 class FeatureTable extends Doctrine_Table {
 
 
-public function GetByIds($ids=array()) {
+	public function GetByIds( $ids=array() ) {
 
-    $q = $this->createQuery('f')
-        ->whereIn('f.id', $ids);
+		$q = $this->createQuery('f')
+			->whereIn('f.id', $ids);
 
-    return  $q->execute();
-}
-
-
+		return  $q->execute();
+	}
 
 
-
-
-
-    /**
-     * Returns an instance of this class.
-     *
-     * @return object FeatureTable
-     */
-    public static function getInstance()
-    {
-        return Doctrine_Core::getTable('Feature');
-    }
+	/**
+	 * Returns an instance of this class.
+	 *
+	 * @return object FeatureTable
+	 */
+	public static function getInstance()
+	{
+		return Doctrine_Core::getTable('Feature');
+	}
 }

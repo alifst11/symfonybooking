@@ -54,6 +54,10 @@ booking_submit_create:
   url: /booking/new/create
   param: {module:booking, action: CreateBooking}
 
+search_request:
+  url: /src
+  param: {module:search, action: SearchRequest}
+
 
 #Json
 json_dates:
@@ -64,7 +68,7 @@ json_dates:
 # ______________________________
 search_public:
   url: /:sf_culture/search
-  param: {module: public, action: Search}
+  param: {module: search, action: Search}
 
 app_discovery:
   url: /:sf_culture/explore
@@ -77,6 +81,10 @@ new_booking:
 apartment_single:
   url: /:sf_culture/apartment/:id
   param: { module: public, action: ShowApartment }
+
+apartments_city:
+  url: /:sf_culture/city/:id
+  param: { module: public, action: CityApartments }
 
 
 # default rules

@@ -206,7 +206,7 @@ body {
   padding: 50px 0px 0px 0px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
-  line-height: 18px;
+  line-height: 16px;
   color: #333333;
   background-color: #ffffff;
 }
@@ -4990,7 +4990,7 @@ a.badge:hover {
 }
 
 .hero-unit {
-  padding: 60px;
+  padding: 30px;
   margin-bottom: 30px;
   background-color: #eeeeee;
   -webkit-border-radius: 6px;

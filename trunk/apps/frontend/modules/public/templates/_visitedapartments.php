@@ -1,5 +1,5 @@
 <div>
-  <h4>Visited apartments</h4>
+  <h4><?php echo __('Visited apartments') ?></h4>
   <ul>
   <?php foreach($apartments as $apartment): ?>
      <li><?php echo link_to($apartment->name, @apartment_single, array('id'=>$apartment->id) ) ?></li>
@@ -7,4 +7,4 @@
   </ul>
 </div>
 
-<?php  //  echo(print_r($sf_data->getRaw('apids'))) ?>
+<?php  //  echo( $sf_data->getRaw('req') ) ?>

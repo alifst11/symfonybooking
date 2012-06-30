@@ -3,3 +3,5 @@ City:
   columns:
     name: { type: string(255), notnull: true }
     description: { type: string(255) }
+  relations:
+    Apartments: {class: Apartment, type: many, local: id, foreign: city_id, foreignAlias: Apartments}

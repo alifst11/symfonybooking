@@ -7,18 +7,18 @@
  * 
  * @property string $name
  * @property string $description
- * @property Doctrine_Collection $City
+ * @property Doctrine_Collection $Apartments
  * 
  * @method string              getName()        Returns the current record's "name" value
  * @method string              getDescription() Returns the current record's "description" value
- * @method Doctrine_Collection getCity()        Returns the current record's "City" collection
+ * @method Doctrine_Collection getApartments()  Returns the current record's "Apartments" collection
  * @method City                setName()        Sets the current record's "name" value
  * @method City                setDescription() Sets the current record's "description" value
- * @method City                setCity()        Sets the current record's "City" collection
+ * @method City                setApartments()  Sets the current record's "Apartments" collection
  * 
- * @package    sf_sandbox
+ * @package    Adriatic.hr tecaj projekt
  * @subpackage model
- * @author     Your name here
+ * @author     Tino
  * @version    SVN: $Id: Builder.php 7490 2010-03-29 19:53:27Z jwage $
  */
 abstract class BaseCity extends sfDoctrineRecord
@@ -40,7 +40,7 @@ abstract class BaseCity extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasMany('Apartment as City', array(
+        $this->hasMany('Apartment as Apartments', array(
              'local' => 'id',
              'foreign' => 'city_id'));
 

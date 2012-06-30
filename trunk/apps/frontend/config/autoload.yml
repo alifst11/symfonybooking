@@ -1,0 +1,4 @@
+autoload:
+  comparators:
+    path:        %SF_APP_MODULE_DIR%/frontend/comparators
+    recursive:   true

@@ -5,23 +5,23 @@
 class ApartmentComparation extends BaseApartmentComparation {
 
 
-public static function FindAppsByFeatures( $features=array() ) {
+	public static function FindAppsByFeatures( $features=array() ) {
 
-	$results = array();
+		$results = array();
 
-  	for ($i=0; $i <count($features) ; $i++) {
+	  	for ($i=0; $i <count($features) ; $i++) {
 
-		if ( isset($features[$i]) ){
-     	    		 $apids= Doctrine_Core::getTable('ApartmentComparation')
-              	  		->GetAppIdsByFeature( $features[$i] );
+			if ( isset($features[$i]) ){
+	     	    		 $apids= Doctrine_Core::getTable('ApartmentComparation')
+	              	  		->GetAppIdsByFeature( $features[$i] );
 
-    		   	$results[$i][ $features[$i] ] = $apids;
-      			}
-  	}
+	    		   	$results[$i][ $features[$i] ] = $apids;
+	      			}
+	  	}
 
-  return $results;
+	  return $results;
 
-}
+	}
 
 
 }
