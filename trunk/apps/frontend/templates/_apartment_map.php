@@ -1,11 +1,11 @@
 
-<div id="map_home" style="width:<?php echo($width) ?>px; height:<?php echo($height) ?>px"></div>
+<div id="map_canvas" style="width:<?php echo($width) ?>px; height:<?php echo($height) ?>px"></div>
 
 <script type="text/javascript">
 
 	function show_map() {
 	  
-		var map = new google.maps.Map(document.getElementById('map_home'),{
+		var map = new google.maps.Map(document.getElementById('map_canvas'),{
 			mapTypeId: google.maps.MapTypeId.ROADMAP,
 			center: new google.maps.LatLng(<?php echo($apartment->getGLat()) ?>, <?php echo($apartment->getGLon()) ?>),
 			zoom: 10

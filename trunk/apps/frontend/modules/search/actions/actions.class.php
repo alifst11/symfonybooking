@@ -21,6 +21,13 @@ class searchActions extends sfActions {
 	}
 
 
+	public function executeSearchApartmentsByCity(sfWebRequest $request){
+
+
+	}
+
+
+
 	/* Search request  */
 	public function executeSearchRequest(sfWebRequest $request) {
 
@@ -29,7 +36,6 @@ class searchActions extends sfActions {
 			if ( count($errors) == 0 ) {
 				
 				$this->city = Doctrine_Core::getTable('City')->FindByNameLike($request->getParameter('city'));
-				
 				$this->features = Doctrine_Core::getTable('Feature')->GetByIds( $request->getParameter('features') );
 		 		
 			}

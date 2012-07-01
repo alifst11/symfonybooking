@@ -58,6 +58,9 @@ search_request:
   url: /src
   param: {module:search, action: SearchRequest}
 
+search_apartments:
+  url: /src_app_city
+  param: {module:search, action: SearchApartmentsByCity}
 
 #Json
 json_dates:
