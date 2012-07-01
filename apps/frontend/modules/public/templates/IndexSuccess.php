@@ -1,7 +1,7 @@
 <div id="ajxloader"></div>
 
 <div class="hero-unit">
-	<h1> $this => return false;</h1>
+	<h1> $this => booking != false;</h1>
 	<p>Yet another web site about rentals booking ...</p>
 	<p>
 		<a href="#" class="btn btn-primary" id="find_location">
@@ -30,37 +30,36 @@
 </div>
 
 <div id="map_stuff">
-
-	<div id="map-canvas" style="width:870px; height:300px"></div>
-
-	<div id="infoPanel">
-		<b>Status</b>
-		<div id="markerStatus"><i>Click & drag marker to start your search</i></div>
-		<b>Current position:</b>
-		<div id="info"></div>
-		<b>Closest matching address:</b>
-		<div id="address"></div>
+	<div id="map_over">
+		<div id="map-canvas" style="width:870px; height:300px"></div>
 	</div>
-
+	<div class="row">
+		<br>
+		<div class="span6">
+			<div id="results"></div>
+		</div>
+		<div class="span3">
+			<div id="infoPanel">
+				<b>Status:</b><div id="markerStatus" style="float:right;">Drag magnifier to start your search</div> <hr>
+				<b>Cordinates to here:</b> <div id="info"></div> <hr>
+				<b>Closest matching address is:</b><div id="address" style="float:right;"></div>
+			</div>
+		</div>
+	</div>
 </div>
-
-<div id="results"></div>
 
 <script type="text/javascript">
 
 	var geocoder = new google.maps.Geocoder();
-
+	var icon = 'http://cdn1.iconfinder.com/data/icons/pleasant/Search.png';
 
 	function AjaxSearch(city_name){
 
 		$("#ajxloader").show();
 
-		
 		$('#results').load('<?php echo url_for(@search_apartments); ?>', {
 			city_name: city_name
        		});
-
-
 	}
 
 	// Update HTML field with formatted adress & call AJAX search with city name value as string.
@@ -79,10 +78,14 @@
 
 			 	 // Gets the adress
 				$.each(responses[0].address_components, function (i, address_component) {
-				    if (address_component.types[0] == "locality") // locality type ?!
-				         console.log(address_component.long_name);   //  town name
-				         AjaxSearch(address_component.long_name);
-				        //return false; // break 
+				    
+					if (address_component.types[0] == "locality") {
+						// console.log(address_component['short_name']);   //  town name
+						// console.log(address_component.short_name);
+					         AjaxSearch(address_component.short_name);
+						//  return false; // break 
+				  	}
+
 				    });
 
 			} else {
@@ -141,13 +144,14 @@
 						map: map,
 						position: LatLng,
 						draggable: true,
-						title: 'Here you are'
+						icon: icon,
+						title: 'Drag to search'
 					});
 
 					// Add circle
 					var circle = new google.maps.Circle({
 								map: map,
-								radius: 5000 // 4 km
+								radius: 6500 // 4 km
 						 });
 					circle.bindTo('center', marker, 'position');
 					

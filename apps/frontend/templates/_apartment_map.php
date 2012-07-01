@@ -1,5 +1,7 @@
 
-<div id="map_canvas" style="width:<?php echo($width) ?>px; height:<?php echo($height) ?>px"></div>
+<div id="map_over">
+	<div id="map_canvas" style="width:<?php echo($width) ?>px; height:<?php echo($height) ?>px"></div>
+</div>
 
 <script type="text/javascript">
 
@@ -17,7 +19,7 @@
 			title: '<?php echo($apartment->getName()) ?>',
 		});
 
-		var listener = google.maps.event.addListener(map2, "idle", function() { 
+		var listener = google.maps.event.addListener(map, "idle", function() { 
 			if (map.getZoom() > 16) map.setZoom(16); 
 			google.maps.event.removeListener(listener); 
 		});
