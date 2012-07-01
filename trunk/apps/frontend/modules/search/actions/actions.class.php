@@ -23,6 +23,21 @@ class searchActions extends sfActions {
 
 	public function executeSearchApartmentsByCity(sfWebRequest $request){
 
+		$query = $request->getParameter('city_name');
+		$this->query = $query;
+
+		if ( is_object(Doctrine_Core::getTable('City')->FindByNameLike($query)) ) {
+			$this->city = Doctrine_Core::getTable('City')->FindByNameLike($query);
+		    } else {
+		    	$this->city = null; 
+		 }
+
+		if ( $this->city != null ) {
+			$this->apartments = $this->city->Apartments;
+		    } else {
+		    	$this->apartments = null;
+		 }
+		
 
 	}
 

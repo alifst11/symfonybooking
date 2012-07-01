@@ -6,42 +6,44 @@
 
 		<div class="row">
 
-			<div class="span3">
-				<h4>When and where</h4><br>
+			<div class="span8">
+				<br>
+				<h1 align="middle">1. <?php echo('Chose your destination') ?></h1><br>
+				<div align="middle"><?php echo $form['city']; ?> </div>
 
-				<label>Date from</label>
-				<?php echo $form['date_from']; ?><br>
-				
-				<label>Date to</label>
-				<?php echo $form['date_to']; ?><br>
-				
-				<label>City</label>
-				<?php echo $form['city']; ?> 
-
-			</div>
-
-			<div class="span3">
-			
-				<label>Features you want</label><hr>
+				<h2 align="middle">2. <?php echo('Add all features that you want in your apartment') ?></h2><br>
 			 	<div id="f_wants" class="">  
 			 		
 			 		<div id="results"></div>
-			 		<br><br><br><br><br>
+			 		<br><br>
+			 		<div style="float:left"><?php echo $form['f_want']; ?></div>
+					<br><br>
+				</div><br><br>
 
-					<?php echo $form['f_want']; ?>
-					<br>
-
+				
+				<h3 align="middle">3. <?php echo('Planed dates (optionaly)') ?></h3>
+				<div class="row">
+					<div class="span1">&nbsp;</div>
+					<div class="span2">
+						<label>Date from</label>
+						<?php echo $form['date_from']; ?>
+					</div>
+					<div class="span1">&nbsp;</div>
+					<div class="span2">
+						<label>Date to</label>
+						<?php echo $form['date_to']; ?>
+					</div>
 				</div>
-				<br>
-				<button type="button" id="search_submit">Search</button>  
+			<button type="button" id="search_submit">Search</button>
 			</div>
+			
 		</div>
 </form> 
 
 <hr>
 
 <div id="results_ajx">
-Result will show here ...
+<p align="middle">Result will show here ...</p>
 </div>
 
 <?php  use_javascript('/frontend_dev.php/djs/global/search_js.js') ?>
