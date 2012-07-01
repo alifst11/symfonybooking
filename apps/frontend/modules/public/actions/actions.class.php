@@ -78,18 +78,26 @@ class publicActions extends sfActions {
 
 		$this->cities = Doctrine_Core::getTable('city')
 		        ->createQuery('c')
+		        ->select('c.id, c.name, count(a.id) as count')
+		        ->leftJoin('c.Apartments a')
+		        ->groupBy('c.id')
+		        ->orderBy('count DESC')
 		        ->execute();
+
 	    	$this->apartments = Doctrine_Core::getTable('apartment')
 		        ->createQuery('a')
+		        ->limit(9)
+		        ->orderBy('a.created_at  DESC')
+		        ->leftJoin('a.City')
 		        ->execute();
+
 	}
 
 
 	/* APARTMENT SINGLE  */
 	public function executeShowApartment(sfWebRequest $request) {
 
-		$this->forward404Unless($this->apartment = Doctrine_Core::getTable('apartment')->findOneById($request->getParameter('id')), sprintf('Object category does not exist (%s).', $request->getParameter('id')));
-		$app = $this->apartment;
+		$this->forward404Unless($app = $this->apartment  = Doctrine_Core::getTable('apartment')->find($request->getParameter('id')), sprintf('Object category does not exist (%s).', $request->getParameter('id')));
 
 		$this->periods = $app->Period;
 		$this->images = $app->Pictures;

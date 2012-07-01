@@ -3,15 +3,15 @@
 <div class="row">
 	
 	<div class="span4">
-		<h3><?php echo $apartment -> getName(); ?></h3>
-		<h4><?php echo __('City') ?> <?php echo $apartment -> getCity(); ?></h4>
+		<h1><?php echo $apartment -> getName(); ?></h1>
+		<h4><?php echo __('City') ?>: <?php echo $apartment -> getCity(); ?></h4>
 		<p><?php echo $apartment -> getDescription(); ?></p>
 
 		<?php if( $images->count() >= 1 ): ?>
 				
 				    <?php foreach($images as $image):  ?>
 					<td><?php echo $image -> getPath(); ?></td>
-				    <?php  endforeach; ?>
+				    <?php endforeach; ?>
 				 
 			<?php else: ?>
 				<p><?php echo( __('There are no pictures') )?></p>
@@ -42,13 +42,13 @@
 
 <div class="row">
 	<div class="span4">
-		<?php  include_partial( 'global/apartment_map', array( 'apartment' => $apartment, 'width'=>'370', 'height'=>'200' ) ) ?>
+		<?php include_partial( 'global/apartment_map', array( 'apartment' => $apartment, 'width'=>'370', 'height'=>'200' ) ) ?>
 	</div>
 	
 	<div class="span4">
 		<h4 align="middle"><?php echo( __('Prices') ) ?></h4><hr>
 		
-		<?php if( $periods->count() >= 1 ): ?>
+		<?php  if( $periods->count() >= 1 ): ?>
 			<?php  include_partial( 'periods_table', array( 'periods' => $periods ) ) ?>
 		      <?php else: ?>
 			<h4 align="middle">There is no price list so you can't book :(</h4>

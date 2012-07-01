@@ -1,21 +1,52 @@
 Apartment:
+
   Apartment_1:
     name: Prvi apartman
     City: City_1
     name: Ime apartmana 1
     description: Opis apartmana
     max_pax: 3
+    g_lat: 43.50695
+    g_lon: 16.442397
     Feature: [ f6, f7, f8, f9 ]
+
   Apartment_2:
     name: Drugi apartman
     City: City_2
     name: Ime apartmana 2
     description: Opis apartmana 2 
     max_pax: 5
+    g_lat: 45.814912
+    g_lon: 15.978515
     Feature: [ f4, f5, f6, f7, f8, f10 ]
+
   Apartment_3:
     name: Treci apartman
     City: City_2
     description: Opis apartmana 3
     max_pax: 12
+    g_lat: 45.81235
+    g_lon: 15.972147
     Feature: [ f1, f3, f5, f7, f11, f12 ]
+
+<?php for ($i = 4; $i <= 100; $i++): ?>
+
+  Apartment_<?php echo $i ?>:
+    name: Apartment <?php echo $i."\n" ?>
+    City: City_<?php echo( rand(1,6) ) ."\n" ?>
+    description: Opis apartmana <?php echo $i."\n" ?>
+    max_pax: <?php echo( rand(1,10) ) ."\n" ?>
+    g_lat: 45.81235
+    g_lon: 15.972147
+
+<?php $from = rand(4, 12); ?>
+<?php $features = '[ '; ?>
+<?php for ($j = $from; $j <= 12; $j++): ?>
+<?php $features = $features . 'f' . $j . ',' ; ?>
+<?php endfor ?>
+<?php $features = $features . ']' ?>
+
+    Feature: <?php echo $features."\n" ?>
+
+<?php endfor ?>
+
