@@ -15,22 +15,23 @@
 	<div class="row">
 
 		<div class="span4">
-
 			<h4>Results </h4><br>
 			<?php echo include_partial('public/apartment_results',array('apps'=>$apps, 'params'=>array() )); ?>
-
 		</div>
 
 		<div class="span3">
 
+			<?php if( $features): ?>
+				
+				Apartments in <strong><?php echo($city->getName()) ?></strong>  with this features.
+				<?php foreach ($features as $feature): ?>
+					<?php echo ($feature->getName()  )?> <br>
+				<?php endforeach; ?>
 
-			Apartments in <strong><?php echo($city->getName()) ?></strong> with this features:
-
-			<?php foreach ($features as $feature): ?>
-
-				<?php echo ($feature->getName()  )?> <br>
-		
-			<?php endforeach; ?>
+			      <?php else: ?>
+			      	  Apartments in <strong><?php echo($city->getName()) ?></strong>
+			      	<p><?php echo( __('Chose some features to narrow your serach') ) ?></p>	
+			<?php endif;  ?>
 
 		</div>
 

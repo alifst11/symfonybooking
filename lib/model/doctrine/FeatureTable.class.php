@@ -10,10 +10,16 @@ class FeatureTable extends Doctrine_Table {
 
 	public function GetByIds( $ids=array() ) {
 
-		$q = $this->createQuery('f')
-			->whereIn('f.id', $ids);
+		if (count($ids) > 0) {
+		
+			$q = $this->createQuery('f')
+				   ->whereIn('f.id', $ids);
+			return  $q->execute();
 
-		return  $q->execute();
+		     } else {
+			return false;
+		}
+		
 	}
 
 

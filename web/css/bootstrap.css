@@ -33,6 +33,9 @@ audio:not([controls]) {
   display: none;
 }
 
+#map-canvas label { width: auto; display:inline; }
+#map-canvas img { max-width: none; }
+
 html {
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
