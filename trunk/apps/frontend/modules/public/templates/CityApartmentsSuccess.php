@@ -2,4 +2,4 @@
 <p><?php echo($city->getDescription() )  ?></p>
 <hr>
 
-<?php include_partial('public/apartment_list', array('apartments' => $apartments)) ?>
+<?php include_partial('public/apartment_list', array('apartments' => $apartments, 'show_city' => false)) ?>

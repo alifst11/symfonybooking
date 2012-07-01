@@ -1,0 +1,8 @@
+Booking:
+  Booking_1:
+    Apartment: Apartment_1
+    Client: User_client_1
+    date_from: '2012-07-05'
+    date_to: '2012-07-10'
+    pax: 2
+    price: 600

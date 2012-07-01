@@ -11,3 +11,9 @@ City:
   City_4:
     name: Dubrovnik
     description: Opis Dubrovnika
+  City_5:
+    name: Makarska
+    description: Opis Makarske
+  City_6:
+    name: Zadar
+    description: Opis Zadra

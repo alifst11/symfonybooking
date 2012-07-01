@@ -5,7 +5,7 @@
 	<p>Yet another web site about rentals booking ...</p>
 	<p>
 		<a href="#" class="btn btn-primary" id="find_location">
-			<?php echo('Find my location') ?>
+			<?php echo('Find my location & search') ?>
 		</a>
 		<a class="btn" id="show_text">
 			<?php echo('Reset') ?>
@@ -15,23 +15,23 @@
 
 
 <div class="row" id="home_content">
-	<div class="span4">
-		 <h4><?php echo( __('Browse by city') ) ?></h4><hr>
-	 <?php foreach ($cities as $city): ?>
-				 <h5><?php echo(link_to($city->getName(), @apartments_city, array('id'=>$city->getId()), array() )) ?></h5>
-				 <p><?php echo($city->getDescription() ) ?></p>
-	<?php endforeach; ?>
+	
+	<div class="span3">
+		 <h4><?php echo( __('Top cities by Apartments') ) ?></h4><hr>
+		 <?php foreach ($cities as $city): ?>
+		 	<h1><?php  echo($city->count ) ?> <?php  echo(link_to($city->getName(), @apartments_city, array('id'=>$city->getId()), array() )) ?></h1>
+		<?php endforeach; ?>
 	</div>
 
-	<div class="span4">
-		<h4><?php echo( __('Latest in offer') ) ?></h4><hr>
-		<?php include_partial('public/apartment_list', array('apartments' => $apartments)) ?>
+	<div class="span5">
+		<h4><?php echo( __('Latest added') ) ?></h4><hr>
+		<?php  include_partial('public/apartment_list', array('apartments' => $apartments, 'show_city' => true)) ?>
 	</div>
 </div>
 
 <div id="map_stuff">
 
-	<div id="map-canvas" style="width:650px; height:300px"></div>
+	<div id="map-canvas" style="width:870px; height:300px"></div>
 
 	<div id="infoPanel">
 		<b>Status</b>
@@ -44,11 +44,7 @@
 
 </div>
 
-<div id="results">
-Results...
-</div>
-
-
+<div id="results"></div>
 
 <script type="text/javascript">
 
