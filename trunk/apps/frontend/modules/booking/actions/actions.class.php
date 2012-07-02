@@ -15,12 +15,12 @@ class bookingActions extends sfActions {
 
 	public function executeNewBooking(sfWebRequest $request) {
 
-		$app_id	= $request->getParameter('apid');
+		$app_id		= $request->getParameter('apid');
 		$date_from	= $request->getParameter('start_date');
 		$days		= $request->getParameter('days');
 		$pax		= $request->getParameter('pax');
 		
-		$date_to 	= date("Y-m-d", (strtotime($date_from) + (86400 * ($days + 1) ) ));
+		$date_to 	= date("Y-m-d", (strtotime($date_from) + (86400 * $days) ));
 		$app 		= Doctrine_Core::getTable('Apartment')->find($app_id);
 		
 		$form = new BookingForm();

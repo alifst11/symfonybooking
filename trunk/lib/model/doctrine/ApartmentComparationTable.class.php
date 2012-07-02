@@ -16,7 +16,7 @@ class ApartmentComparationTable extends Doctrine_Table {
 	}
 
 
-	public function getAppIdsByAllFeatures( $features = array(), $city_id = null ){
+	public function getAppIdsByAllFeatures( $features = array(), $city_id = null ) {
 
 		$q = $this->createQuery('ac')
 			   ->select('ac.apartment_id');
@@ -35,10 +35,6 @@ class ApartmentComparationTable extends Doctrine_Table {
 	}
 
 
-
-
-
-
 	/**
 	 * Returns an instance of this class.
 	 *
@@ -48,7 +44,6 @@ class ApartmentComparationTable extends Doctrine_Table {
 	{
 		return Doctrine_Core::getTable('ApartmentComparation');
 	}
-
 
 	
 }

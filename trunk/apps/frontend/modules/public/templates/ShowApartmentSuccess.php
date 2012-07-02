@@ -1,7 +1,6 @@
 <div id="ajxloader" ></div>
 
 <div class="row">
-	
 	<div class="span4">
 		<h1><?php echo $apartment -> getName(); ?></h1>
 		<h4><?php echo __('City') ?>: <?php echo $apartment -> getCity(); ?></h4>
@@ -18,14 +17,12 @@
 		<?php endif; ?>
 
 	</div>
-
 	<div class="span4">
 		<br>
 		<div id ="book_form_content">
 		    <?php include_partial('booking/booking_form', array('form' => $form, 'sign_in' => false)) ?>
 		</div>
 	</div>
-	
 </div>	
 
 <hr>
@@ -34,7 +31,6 @@
 	<div class="span5">
 		<?php include_partial('date_picker', array('apartment' => $apartment )) ?>
 	</div>
-	
 	<div class="span3">
 	</div>
 </div>	
@@ -45,7 +41,6 @@
 	<div class="span4">
 		<?php include_partial( 'global/apartment_map', array( 'apartment' => $apartment, 'width'=>'370', 'height'=>'200' ) ) ?>
 	</div>
-	
 	<div class="span4">
 		<h4 align="middle"><?php echo( __('Prices') ) ?></h4><hr>
 		

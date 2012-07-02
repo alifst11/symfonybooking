@@ -11,7 +11,6 @@
 class searchActions extends sfActions {
 
 
-
 	/* Search start  */
 	public function executeSearch(sfWebRequest $request) {
 
@@ -26,8 +25,8 @@ class searchActions extends sfActions {
 		$query = $request->getParameter('city_name');
 		$this->query = $query;
 
-		if ( is_object(Doctrine_Core::getTable('City')->FindByNameLike($query)) ) {
-			$this->city = Doctrine_Core::getTable('City')->FindByNameLike($query);
+		if ( is_object( $city = Doctrine_Core::getTable('City')->FindByNameLike($query)) ) {
+			$this->city = $city;
 		    } else {
 		    	$this->city = null; 
 		 }
@@ -42,33 +41,19 @@ class searchActions extends sfActions {
 	}
 
 
-
 	/* Search request  */
 	public function executeSearchRequest(sfWebRequest $request) {
 
-		$errors		 = LinkParser::ValidateSearchRequest($request);
+		$errors = LinkParser::ValidateSearchRequest($request);
 			
 			if ( count($errors) == 0 ) {
 				
-				$this->city = Doctrine_Core::getTable('City')->FindByNameLike($request->getParameter('city'));
-				$this->features = Doctrine_Core::getTable('Feature')->GetByIds( $request->getParameter('features') );
-		 		
+				$this->city 	= Doctrine_Core::getTable('City')->FindByNameLike($request->getParameter('city'));
+				$this->features 	= Doctrine_Core::getTable('Feature')->GetByIds( $request->getParameter('features') );
+		 		$this->apps 	= Doctrine_Core::getTable('Apartment')->getApartmentsByFeatures( $request->getParameter('features'), $this->city->getId() );	
+			} else {
+				$this->errors = $errors; 
 			}
-		
-		$apartments = Doctrine_Core::getTable('Apartment')->getApartmentsByFeatures( $request->getParameter('features'), $this->city->getId() );
-		
-		 if ($apartments === false) {
-		 	array_push($errors, 'No results');
-		      } else {
-		      	$this->apps = $apartments;
-		 }
-		
-		 $this->errors 	 = $errors; 
-		 
-		 
-
-		// $this->apids = Doctrine_Core::getTable('ApartmentComparation')->getAppIdsByAllFeatures( $request->getParameter('features') );
-		// $this->features = $request->getParameter('features');
 	}
 
 }

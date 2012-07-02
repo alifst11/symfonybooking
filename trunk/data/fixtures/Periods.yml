@@ -6,16 +6,16 @@ Period:
     price: 100
   Period_2:
     Apartment: Apartment_1
-    date_from: '2012-01-01'
+    date_from: '2012-02-02'
     date_to: '2012-04-01'
     price: 150
   Period_3:
     Apartment: Apartment_1
-    date_from: '2012-04-01'
+    date_from: '2012-04-02'
     date_to: '2012-06-01'
     price: 180
   Period_4:
     Apartment: Apartment_1
-    date_from: '2012-06-01'
-    date_to: '2012-11-25'
+    date_from: '2012-06-02'
+    date_to: '2012-12-31'
     price: 200

@@ -7,22 +7,16 @@ class LinkParser  {
 	private $url;
 
 	public function __construct($url) {
-		
 		$this->url = $url;
-
 	}
 
 
 	public function getLinkData() {
-
 		return $this->ParseLink();
-
 	}
 
 
-
-
-	public static function ValidateSearchRequest( $request ){
+	public static function ValidateSearchRequest( $request ) {
 
 		$date_from	= $request->getParameter('date_from');
 		$date_to 	= $request->getParameter('date_to');
@@ -31,11 +25,11 @@ class LinkParser  {
 
 		$errors = array();
 		
-//  City______________ 
+		//  City______________ 
 
 		$city = Doctrine_Core::getTable('City')->FindByNameLike($city_name);
 
-		if ( is_object($city) === false ){
+		if ( is_object($city) === false ) {
 
 		      	$error = 'City ' . $request->getParameter('city') . ' not found ... ';
 		      	array_push($errors, $error);
@@ -52,11 +46,9 @@ class LinkParser  {
 			 array_push($errors, $e);
 		}
 
-//  Dates______________ 
-
+		//  Dates______________ 
 
 		return $errors;
-
 	}
 
 
@@ -68,7 +60,7 @@ class LinkParser  {
 	
 	*/
 
-	private function ParseLink(){
+	private function ParseLink() {
 
 		$var = $this->url;
 
@@ -93,32 +85,34 @@ class LinkParser  {
 				  
 			  $x = explode('=', $val);
 				  
-		/*  Parameter value check */
-		 if ( is_numeric($x[0]) ){
-					  
-			 if ( $x[1] == "t"  ) {
-				$primary[$primary_counter] = $x[0];
-				$primary_counter ++;
-			 }
+			/*  Parameter value check */
+			if ( is_numeric($x[0]) ) {
+						  
+				 if ( $x[1] == "t"  ) {
+					$primary[$primary_counter] = $x[0];
+					$primary_counter ++;
+				 }
 
-		   } else {
-				$indent = substr( $x[0], 0, 1 );		 /*  <= _X as indentifier and format   */
-				$id = substr( $x[0], 1 );  		 	/*   <= Remove indentifier */
-				
-				if ( is_numeric($id) && ( $indent == "_") ) {
-						 /*  Is true or false   */
-						 if ( $x[1] == "t" ) { 	 
-							$secondary['true'][$secondary_counter_t] = $id;
-							$secondary_counter_t ++;
-							 } else {
-							 $secondary['false'][$secondary_counter_f] = $id;
-							 $secondary_counter_f ++;
-							  }
-				}
+			       } else {
+					$indent = substr( $x[0], 0, 1 );		 /*  <= _X as indentifier and format   */
+					$id = substr( $x[0], 1 );  		 	/*   <= Remove indentifier */
+					
+					if ( is_numeric($id) && ( $indent == "_") ) {
+							 /*  Is true or false   */
+							 if ( $x[1] == "t" ) { 	 
+								$secondary['true'][$secondary_counter_t] = $id;
+								$secondary_counter_t ++;
+								 } else {
+								 $secondary['false'][$secondary_counter_f] = $id;
+								 $secondary_counter_f ++;
+								  }
+					}
 			}
-		  }
-	  $counter++;
-	}	
+		}
+	  	
+	  	$counter++;
+	  }	// <= end first ForEach
+		
 		/* Garbage collector ... */ 
 		unset($val, $x, $var);   
 		return array_merge( array('primary'=>$primary), array('secondary'=>$secondary) );

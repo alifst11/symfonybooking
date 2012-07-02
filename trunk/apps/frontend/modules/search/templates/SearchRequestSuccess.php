@@ -1,5 +1,5 @@
 
-<?php if( count($errors) > 0 ): ?> 
+<?php if( isset($errors) ): ?> 
 	
 	<div class="alert alert-error">	
 		<?php foreach($errors as $error => $value): ?>
@@ -7,13 +7,11 @@
 		<?php endforeach; ?>
 	</div>
 
-
     <?php else:  ?>
 
 	<div class="row">
 
 		<div class="span8">
-			<h4 align="middle">There are <?php echo($apps->count()) ?> results </h4><br>
 			<?php echo include_partial('public/apartment_results',array('apps'=>$apps, 'params'=>array() )); ?>
 		</div>
 
@@ -21,9 +19,11 @@
 
 			<?php if( $features): ?>
 				
-				Apartments in <strong><?php echo($city->getName()) ?></strong>  with this features.
+				<b>Features</b><br><br>
 				<?php foreach ($features as $feature): ?>
-					<?php echo ($feature->getName()  )?> <br>
+					<span class="sidebar_feature label label-success">
+					<?php echo ($feature->getName()  )?>
+					</span>
 				<?php endforeach; ?>
 
 			      <?php else: ?>

@@ -52,17 +52,17 @@ class PeriodForm extends BasePeriodForm {
 			 /* Is date_from already in use ?*/
 			 foreach ($periods as $period) {
 			   
-				   if ( in_array(strtotime($values['date_from']), $period->getDatesBetween()) ) {
-									  $error_schema->addError($period_difference_error, 'date_from');
-									}   
+				if ( in_array(strtotime($values['date_from']), $period->getDatesBetween()) ) {
+					$error_schema->addError($period_difference_error, 'date_from');
+				}   
 			 }
 			
 			 /* Is date_to already in use ?*/
 			foreach ($periods as $period) {
 			   
-				   if ( in_array(strtotime($values['date_to']), $period->getDatesBetween()) ) {
-									  $error_schema->addError($period_difference_error, 'date_to');
-									}   
+				if ( in_array(strtotime($values['date_to']), $period->getDatesBetween()) ) {
+					 $error_schema->addError($period_difference_error, 'date_to');
+				}   
 			 }
 		  
 		 throw  $error_schema;

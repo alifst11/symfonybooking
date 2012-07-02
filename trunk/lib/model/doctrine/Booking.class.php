@@ -63,8 +63,15 @@ class Booking extends BaseBooking {
 				$pax_valid = true;
 			}
 
+			/* Are there periods for dates... Can we get real price ? */
+			$price = false;
 
-			if ( ($dates===true) && ($avalibility===false) && ($pax_valid === true) ) {
+			if ( (Booking::CalculatePrice($app, $this->date_from, $this->date_to)) > 0 ) {
+				$price = true;
+			}
+
+
+			if ( ($dates===true) && ($avalibility===false) && ($pax_valid === true) && ($price === true) ) {
 						return $this;
 				       } else {
 						return false;
@@ -74,10 +81,10 @@ class Booking extends BaseBooking {
 
 	public static function CalculatePrice(Apartment $app, $date_from, $date_to) {
 
-		$price  = 0;
-		$from   =  strtotime($date_from);
-		$to     =  strtotime($date_to);
-		$periods = $app->Period;
+		$price  		= 0;
+		$from   		=  strtotime($date_from);
+		$to     		=  strtotime($date_to);
+		$periods 	= $app->Period;
 
 		$start_date = $from;
 
