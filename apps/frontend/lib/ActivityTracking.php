@@ -18,7 +18,6 @@ class ActivityTracking extends sfWebRequest {
 	}
 
 
-
 	public static function getCleanApids( $raw_apids ){
 
 	 	$new_apids  = array();
@@ -30,7 +29,6 @@ class ActivityTracking extends sfWebRequest {
 		return array_unique($new_apids);
 
 	}
-
 
 
 	/* Setting array for session */

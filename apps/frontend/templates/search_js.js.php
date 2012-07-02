@@ -1,7 +1,10 @@
 var cities = [
 		"Split",
 		"Omis",
-		"Zagreb"
+		"Zagreb",
+		"Zadar",
+		"Dubrovnik",
+		"Makarska"
 	];
 
 <?php $features = sfConfig::get('app_features_data_all'); ?>
@@ -15,7 +18,7 @@ var features = [
 	];
 	
 
-function scanResults(){	
+function scanResults(){
 	
 	var f_wants =  new Array();
 
@@ -36,7 +39,6 @@ $(document).ready(function() {
 	$( "#city" ).autocomplete({ 
 		source: cities
 	});
-
 
     	// Datepickers
 	$("#date_from, #date_to").datepicker({
@@ -73,7 +75,7 @@ $(document).ready(function() {
 			//create formatted feature
 			var feature = ui.item.value,
 				
-			span = $("<span>").text(feature),
+			span = $("<span>").text(feature).attr('id', 'src_chose'),
 			 a = $("<a>").addClass("remove").attr({
 					href: "javascript:",
 					value: ui.item.id,

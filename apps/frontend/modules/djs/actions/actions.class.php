@@ -10,7 +10,6 @@
  */
 class djsActions extends sfActions{
 
-
 	public function executeLoad(sfWebRequest $request){
 
 		$this->setLayout(false);

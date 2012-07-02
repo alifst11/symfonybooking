@@ -6,7 +6,8 @@
     <?php include_metas() ?>
     <?php echo  stylesheet_tag('bootstrap') ?>
     <?php echo stylesheet_tag('bootstrap-responsive') ?>
-    <?php echo stylesheet_tag('http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/smoothness/jquery-ui.css') ?>
+    <?php // echo stylesheet_tag('http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/smoothness/jquery-ui.css') ?>
+    <?php echo stylesheet_tag('jquery-ui-1.8.21.custom.css') ?>
     <?php echo javascript_include_tag('https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js') ?>
     <?php echo javascript_include_tag('https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js') ?>
     <?php echo javascript_include_tag('http://maps.googleapis.com/maps/api/js?sensor=false') ?>
@@ -75,9 +76,7 @@
                         </div>
                         <script type="text/javascript">
                             jQuery(document).ready(function($) {
-                              $('.alert').fadeOut(7000, function() {
-                                      // remove alert class error.
-                                  });
+                              $('.alert').fadeOut(7000);
                                });
                         </script>
             <?php endif; ?>

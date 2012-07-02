@@ -8,10 +8,22 @@
 class ApartmentTable extends Doctrine_Table {
 	
 
+	/* Latest added apartments */
+	public function LastAdded($limit=4) {
+
+		$q = $this->createQuery('a')
+			->limit($limit)
+		        	->orderBy('a.created_at  DESC')
+		        	->leftJoin('a.City');
+
+		return $q->execute();
+	}
+
+
 	/* Returns Bookings in period */
 	/* BUG: ako je period preko nekog bookinga !!! */
 	
-	public static function BookingsInPeriod($app_id, $date_from, $date_to) {
+	public function BookingsInPeriod($app_id, $date_from, $date_to) {
 		  
 		 $q = Doctrine_Core::getTable('Booking')->createQuery('a')
 				->where('apartment_id = ?', $app_id)
@@ -21,8 +33,9 @@ class ApartmentTable extends Doctrine_Table {
 			return $q->execute();
 	}
 
+
 	/* Returns Bookings beetween two dates*/
-	public static function BookingsBeetweenDates($app_id, $date_from, $date_to) {
+	public function BookingsBeetweenDates($app_id, $date_from, $date_to) {
 		  
 		 $q = Doctrine_Core::getTable('Booking')->createQuery('a')
 				->where('apartment_id = ?', $app_id)
@@ -34,22 +47,21 @@ class ApartmentTable extends Doctrine_Table {
 
 
 	/* Returns Bookings in City */
-
 	public function InCity($city_id) {
 		  
 		$q = $this->createQuery('a')
-		  ->where('a.city_id > ?', $city_id);
+			->where('a.city_id > ?', $city_id);
 	 
 		return $q->execute();
 
 	}
+
 
 	/* Return suggested apartments */
 	public function getApartmentsByFeatures( $features = array(), $city_id = null ) {
 
 		$apids = Doctrine_Core::getTable('ApartmentComparation')->getAppIdsByAllFeatures($features, $city_id);
 		
-
 		if ( count($apids) == 0 ){
 			
 			return false;
@@ -61,9 +73,8 @@ class ApartmentTable extends Doctrine_Table {
 
 			return  $q->execute();
 		}
-
-		
 	}
+
 
 	/**
 	 * Returns an instance of this class.

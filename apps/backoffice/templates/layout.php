@@ -3,7 +3,7 @@
   <head>
     <?php include_stylesheets() ?>
     <?php echo stylesheet_tag('bootstrap') ?>
-    <?php echo stylesheet_tag('http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/base/jquery-ui.css') ?>
+    <?php echo stylesheet_tag('jquery-ui-1.8.21.custom.css') ?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
      <?php echo javascript_include_tag('bootstrap.js') ?>

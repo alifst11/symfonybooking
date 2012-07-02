@@ -20,6 +20,7 @@
 	</div>
 
 	<div class="span4">
+		<br>
 		<div id ="book_form_content">
 		    <?php include_partial('booking/booking_form', array('form' => $form, 'sign_in' => false)) ?>
 		</div>
@@ -27,7 +28,7 @@
 	
 </div>	
 
-<br><hr>
+<hr>
 
 <div class="row">
 	<div class="span5">
