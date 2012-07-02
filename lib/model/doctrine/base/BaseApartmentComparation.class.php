@@ -1,7 +1,5 @@
 <?php 
 
-
-//include_once '/vendor/symfony/lib/plugins/sfDoctrinePlugin/lib/record/sfDoctrineRecord.class.php';
 abstract class BaseApartmentComparation extends sfDoctrineRecord {
     
 public function setTableDefinition() {
@@ -18,11 +16,14 @@ public function setTableDefinition() {
 	             'notnull' => true,
              ));
 
-   for ($i=1; $i < 50; $i++) { 
+       $this->hasColumn('city_id', 'integer', null, array(
+               'type' => 'integer',
+               'notnull' => true,
+             ));
 
+   for ($i=1; $i < 80; $i++) { 
        $this->hasColumn('feature_' . $i, 'boolean', '', array() );
-	
-	}
+    }
          
 
 
@@ -30,15 +31,12 @@ public function setTableDefinition() {
 
 
   public function setUp() {
-       
-        parent::setUp();
 
         $this->hasOne('Apartment', array(
              'local' => 'apartment_id',
              'foreign' => 'id'));
-
-    }
-
-
+    
+        parent::setUp();
+  }
 
 }

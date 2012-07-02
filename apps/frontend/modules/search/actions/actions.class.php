@@ -55,7 +55,7 @@ class searchActions extends sfActions {
 		 		
 			}
 		
-		$apartments = Doctrine_Core::getTable('Apartment')->getApartmentsByFeatures( $request->getParameter('features') );
+		$apartments = Doctrine_Core::getTable('Apartment')->getApartmentsByFeatures( $request->getParameter('features'), $this->city->getId() );
 		
 		 if ($apartments === false) {
 		 	array_push($errors, 'No results');

@@ -26,7 +26,7 @@ EOF;
 	}
 
 
-	protected static function CheckFeatures($app_id){
+	protected static function CheckFeatures($app_id, $city_id){
 
 		$aq = Doctrine::getTable('ApartmentFeature')->createQuery('af')
 				->select( 'af.feature_id' )->where( 'af.apartment_id = ?', $app_id );
@@ -45,10 +45,12 @@ EOF;
 									echo("Feature: "  . $feature['feature_id'] . " exist in index. \n ");
 								    } else {
 									$record-> $tmp_feature  = '1';
-									$record->save();
 									echo('Feature: ' . $feature['feature_id'] .  " added to index. \n");
 							}
 				}
+
+		$record->city_id = $city_id;
+		$record->save();
 	} 
 
 
@@ -65,7 +67,7 @@ EOF;
 			$features = $q->execute();
 
 			/* Get all apartments */
-			$app_q = Doctrine::getTable('Apartment')->createQuery('a')->select('a.id, a.name');
+			$app_q = Doctrine::getTable('Apartment')->createQuery('a')->select('a.id, a.name, a.city_id');
 			$apartments = $app_q->execute();
 
 			/* Get index data */
@@ -92,7 +94,7 @@ EOF;
 					// Is there index table for apartment ?
 					if ( empty($result) === false ) {
 
-						ComparationSyncTask::CheckFeatures($apartment['id']);
+						ComparationSyncTask::CheckFeatures($apartment['id'], $apartment['city_id']);
 
 						    } else {
 
@@ -100,10 +102,11 @@ EOF;
 
 							$index = new ApartmentComparation();
 							$index->Apartment = $apartment;
+							$index->city_id = $apartment['city_id'];
 							$index -> save();
 
 							// Check features
-							ComparationSyncTask::CheckFeatures($apartment['id']);
+							ComparationSyncTask::CheckFeatures($apartment['id'], $apartment['city_id']);
 					}
 			}
 	}
