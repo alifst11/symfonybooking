@@ -45,9 +45,9 @@ class ApartmentTable extends Doctrine_Table {
 	}
 
 	/* Return suggested apartments */
-	public function getApartmentsByFeatures( $features = array() ) {
+	public function getApartmentsByFeatures( $features = array(), $city_id = null ) {
 
-		$apids = Doctrine_Core::getTable('ApartmentComparation')->getAppIdsByAllFeatures($features);
+		$apids = Doctrine_Core::getTable('ApartmentComparation')->getAppIdsByAllFeatures($features, $city_id);
 		
 
 		if ( count($apids) == 0 ){

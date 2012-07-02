@@ -10,16 +10,14 @@
 
     <?php else:  ?>
 
-
-
 	<div class="row">
 
-		<div class="span4">
-			<h4>Results </h4><br>
+		<div class="span8">
+			<h4 align="middle">There are <?php echo($apps->count()) ?> results </h4><br>
 			<?php echo include_partial('public/apartment_results',array('apps'=>$apps, 'params'=>array() )); ?>
 		</div>
 
-		<div class="span3">
+		<div class="span1">
 
 			<?php if( $features): ?>
 				
