@@ -15,15 +15,14 @@ class Period extends BasePeriod {
 
 	public function getDatesBetween(){
 
-		$from = strtotime($this->date_from);
-		$to= strtotime($this->date_to);
+		$from 	= strtotime($this->date_from);
+		$to 	= strtotime($this->date_to);
+		$dates 	= array();
 
-		$dates = array();
-
-		while ( $from <= $to) {
-			 array_push($dates, $from);
-			 $from += 86400;
-		}
+			while ( $from <= $to) {
+				 array_push($dates, $from);
+				 $from += 86400;
+			}
 
 		return $dates;
 	}

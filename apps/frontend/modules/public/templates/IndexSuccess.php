@@ -181,7 +181,7 @@
 				
 				// geolocation fails
 				function GeoFailure() {
-					alert('There was some error.');
+					alert('There was some epic error.');
 				}
 				
 				// Get first user location
@@ -194,74 +194,3 @@
 	});
 	
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script type="text/javascript">
-/*
-			$(document).ready(function() {
-
-				if(!$('#cities_c').tagcanvas({
-					textColour: '#ff0000',
-					outlineColour: '#ffffff',
-					reverse: true,
-					textColour: null,
-					zoomMax: 1.2,
-					zoomMin: 0.8,
-					depth: 0.9,
-					maxSpeed: 0.03
-				},'tags')) {
-					// something went wrong, hide the canvas container
-					$('#myCanvasContainer').hide();
-				}
-		 
-			}); */
-		</script>
-
- <!--<div id="myCanvasContainer">
-			<canvas width="500" height="500" id="cities_c">
-				<p>Anything in here will be replaced on browsers that support the canvas element</p>
-			</canvas>
-		</div>
-		<div id="tags">
-			<ul>
-				<?php // foreach ($cities as $city): ?>
-				<li><?php // echo(link_to($city->getName(), @apartments_city, array('id'=>$city->getId()), array('style'=>"font-size: 25.8ex") )) ?></li>
-				<?php // endforeach; ?>
-			</ul>
-		</div> -->

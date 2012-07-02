@@ -13,7 +13,7 @@
     <?php echo javascript_include_tag('http://maps.googleapis.com/maps/api/js?sensor=false') ?>
     <?php echo javascript_include_tag('jquery.knob.js') ?>
     <?php echo javascript_include_tag('bootstrap.js') ?>
-    <?php echo javascript_include_tag('jquery.tagcanvas.js') ?>
+    <?php // echo javascript_include_tag('jquery.tagcanvas.js') ?>
     <?php include_javascripts() ?>
 <script>
   window.fbAsyncInit = function() {
