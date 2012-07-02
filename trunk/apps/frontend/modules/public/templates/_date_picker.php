@@ -15,61 +15,60 @@ function DateForArray(date) {
 	var m = date.getMonth();
 	var d = date.getDate();
 
-    	return y + '-' + m + '-' + d;
+		return y + '-' + m + '-' + d;
 }
 
 var newdates = [];
 
 function BuildDates(dates){
- 	for(var i = 0; i < dates.length; i++){
+	for(var i = 0; i < dates.length; i++){
 		for(var j = GetDbDate( dates[i]['f'] ).getTime(); j <= GetDbDate( dates[i]['t'] ).getTime(); j += 86400000){ 
 			dt = new Date(j);
 			dt = DateForArray(dt);
 			newdates.push(dt);
 		}
- 	}
+	}
 }
 
 function SetDatepicker(date){
   
-  dmy = date.getFullYear()  + "-" + date.getMonth() + "-" + date.getDate();
+	dmy = date.getFullYear()  + "-" + date.getMonth() + "-" + date.getDate();
 
-   if ($.inArray(dmy, newdates) == -1) {
-	return [true, ""];
-	     } else {
-	return [false,"unavailable","Unavailable"];
+	if ($.inArray(dmy, newdates) == -1) {
+		return [true, ""];
+		 } else {
+		return [false,"unavailable","Unavailable"];
 	}
 }
 
 function ShowDatepicker(){
 
-     $( "#avalibility" ).datepicker({
-	beforeShowDay: SetDatepicker,
-	inline: true,
-	minDate: "+1D", maxDate: "+4M",
-	numberOfMonths: 2,
-	dateFormat: "yy-mm-dd",
-	firstDay: 1,
-	altField: "#start_date"
-	//showOtherMonths: true
-     });
+	 $( "#avalibility" ).datepicker({
+		beforeShowDay: SetDatepicker,
+		inline: true,
+		minDate: "+1D", maxDate: "+4M",
+		numberOfMonths: 2,
+		dateFormat: "yy-mm-dd",
+		firstDay: 1,
+		altField: "#start_date"
+	 });
 
- $("#avalibility").show();
- $("#ajxloader").hide();
-
+ 	$("#avalibility").show();
+ 	$("#ajxloader").hide();
 }
 
 jQuery(document).ready(function($) {
   
   $.ajax({
-    cache: false,
-    url: url,
-    dataType: 'json',
-    success: function(data){
-	BuildDates(data);
-	ShowDatepicker();
+	cache: false,
+	url: url,
+	dataType: 'json',
+	success: function(data){
+		BuildDates(data);
+		ShowDatepicker();
 	}
   });
 
 });
+
 </script>

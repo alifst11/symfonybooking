@@ -29,8 +29,8 @@ class publicActions extends sfActions {
 	public function executeCreate(sfWebRequest $request){
 
 		if ($this->getUser()->isAuthenticated()) {
-		      $this->getUser()->setFlash('notice', 'Maybe You are an idiot and You forgot to log out to create multiple accounts');
-		      $this->redirect('@profile_home');
+			$this->getUser()->setFlash('notice', 'Maybe You are an idiot and You forgot to log out to create multiple accounts');
+			$this->redirect('@profile_home');
 		    }
 
 		if ( $request->isMethod('post') === false ) {
@@ -76,20 +76,8 @@ class publicActions extends sfActions {
 		    	$this->redirect('homepage');
 		 }
 
-		$this->cities = Doctrine_Core::getTable('city')
-		        ->createQuery('c')
-		        ->select('c.id, c.name, count(a.id) as count')
-		        ->leftJoin('c.Apartments a')
-		        ->groupBy('c.id')
-		        ->orderBy('count DESC')
-		        ->execute();
-
-	    	$this->apartments = Doctrine_Core::getTable('apartment')
-		        ->createQuery('a')
-		        ->limit(9)
-		        ->orderBy('a.created_at  DESC')
-		        ->leftJoin('a.City')
-		        ->execute();
+		$this->cities 		= Doctrine_Core::getTable('city')->TopCities(8);
+	    	$this->apartments 	= Doctrine_Core::getTable('apartment')->LastAdded(9);
 
 	}
 

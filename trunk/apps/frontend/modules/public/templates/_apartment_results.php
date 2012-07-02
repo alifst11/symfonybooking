@@ -1,6 +1,5 @@
 
 <div id="appresults" style="display:none;">
-	
 	<div class="row-fluid">
 	<div class="span" style="display: none;"></div>
 	<?php foreach ($apps as $app): ?>
@@ -26,6 +25,6 @@
   $("#appresults div").each(function (id){
 	var time = 120 * parseInt(id);
 	$(this).hide().fadeIn(time);
-  })
+  });
   $("#ajxloader").hide();
 </script>

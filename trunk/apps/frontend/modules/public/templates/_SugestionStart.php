@@ -1,5 +1,4 @@
 <div>
-
 	<h4><?php echo __('Things that you are looking for') ?></h4>
 	<p><?php echo __('Remove features that you dont want') ?></p>
 	
@@ -9,20 +8,26 @@
 			<?php echo( $apfeature['name'] ) ?>
 		</div>
 	<?php  endforeach ?>
+	<br>
+	<a href="../explore?" id="explore_link"><?php echo __('Explore by features') ?></a> <?php echo __('like this') ?>.
+	<hr>
+	<?php echo __('Browse apartments in ') ?> <?php echo(link_to( $app->getCity(), @apartments_city, array('id'=> $app->getCityId()) )) ?>
+</div>
 
 <script type="text/javascript">        
-   $(document).ready(function() {
- 	buildLink(arr,-1);
-	});
 
- 		var feature = $('.sidebar_feature');
- 		var arr = $.makeArray(feature);
- 		
+var feature = $('.sidebar_feature');
+var arr = $.makeArray(feature);
+
+$(document).ready(function() {
+ 	buildLink(arr,-1);
+});
+
  	function buildLink(array, id){
 
  		oldlink = $("#explore_link").attr("href");
 
-		  for(var i=0; i<arr.length;i++ ){ 
+		for(var i=0; i<arr.length;i++ ){
 			 
 			 /* first time link build*/
 			if(id == -1){
@@ -38,26 +43,16 @@
 			  	arr.splice(i,1);
 			  	break; /* bugovi */
 			    	}
-		 	} 
-
+		 } 
 			// console.log('Features count: ', arr.length, ' Removed: ', id );
-
- 		}
-                      	
-                								
-                								<?php $num = 0; ?>
-                      <?php foreach($apfeatures as $apfeature): ?>
+ 	}
+				
+                	<?php $num = 0; ?>
+	<?php foreach($apfeatures as $apfeature): ?>
                       		
                       		$('#<?php echo $apfeature['id'] ?>').bind('closed', function () {
                       			 buildLink(arr,<?php echo $apfeature['id'] ?>); 
 			})
-              								 <?php $num++; ?>
-		<?php endforeach ?>
+              	<?php $num++; ?>
+	<?php endforeach ?>
 </script>
-
-	<br>
-	<a href="../explore?" id="explore_link"><?php echo __('Explore by features') ?></a> <?php echo __('like this') ?>.
-	<hr>
-	<?php echo __('Browse apartments in ') ?> <?php echo(link_to( $app->getCity(), @apartments_city, array('id'=> $app->getCityId()) )) ?>
-
-</div>
