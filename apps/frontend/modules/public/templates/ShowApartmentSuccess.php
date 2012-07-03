@@ -67,5 +67,7 @@
 <?php slot('sidebar') ?>
   <?php  include_component('public', 'SugestionStart') ?>
   <br><br><br><br>
-  <?php include_component('public', 'visitedapartments') ?>
+  <?php include_component('public', 'ShowSugestedApartments') ?>
+  <br><br><br><br>
+  <?php include_component('public', 'VisitedApartments') ?>
 <?php end_slot() ?>

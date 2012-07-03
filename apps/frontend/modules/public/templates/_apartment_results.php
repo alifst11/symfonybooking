@@ -18,7 +18,7 @@
 			   			<?php echo( $app->getDescription() ) ?>
 			   	 	</p>	
 			   	 	<div class="progress">
-		  			  <div class="bar" style="width: <?php echo(rand(20,90)) ?>%;"></div>
+		  			 <!-- <div class="bar" style="width: <?php //echo(rand(20,90)) ?>%;"></div> -->
 					</div>
 				</div>
 				<div class="span1"></div>
