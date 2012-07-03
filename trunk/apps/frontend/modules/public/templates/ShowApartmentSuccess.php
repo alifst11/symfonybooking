@@ -8,10 +8,21 @@
 
 		<?php if( $images->count() >= 1 ): ?>
 				
-				    <?php foreach($images as $image):  ?>
-					<td><?php echo $image -> getPath(); ?></td>
-				    <?php endforeach; ?>
-				 
+				<ul class="thumbnails">
+					  <li class="span3">
+					  	<?php foreach($images as $image):  ?>
+							
+							<div class="thumbnail">
+								<img src="<?php echo('/symfonybooking/web/uploads' . '/' . $image -> getPath() ) ?>" alt="">
+								  <?php // echo image_tag() ?>
+								  <h5><?php echo( $image->getName() ) ?></h5>
+								  <p><?php echo( $image->getDescription() ) ?></p>
+							</div>
+						
+						<?php endforeach; ?>
+					  </li>
+				</ul>
+
 			<?php else: ?>
 				<p><?php echo( __('There are no pictures') )?></p>
 		<?php endif; ?>
@@ -20,7 +31,7 @@
 	<div class="span4">
 		<br>
 		<div id ="book_form_content">
-		    <?php include_partial('booking/booking_form', array('form' => $form, 'sign_in' => false)) ?>
+			<?php include_partial('booking/booking_form', array('form' => $form, 'sign_in' => false)) ?>
 		</div>
 	</div>
 </div>	
@@ -46,7 +57,7 @@
 		
 		<?php  if( $periods->count() >= 1 ): ?>
 			<?php  include_partial( 'periods_table', array( 'periods' => $periods ) ) ?>
-		      <?php else: ?>
+			  <?php else: ?>
 			<h4 align="middle">There is no price list so you can't book :(</h4>
 		<?php endif; ?>
 

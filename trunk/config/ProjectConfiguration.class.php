@@ -9,6 +9,7 @@ require_once dirname(__FILE__).'/../lib/vendor/symfony/lib/autoload/sfCoreAutolo
   public function setup() {
     $this->enablePlugins('sfDoctrinePlugin');
     $this->enablePlugins('sfDoctrineGuardPlugin');
+    $this->enablePlugins('sfImageTransformPlugin');
   }
 
  public function configureDoctrine(Doctrine_Manager $manager) {

@@ -14,7 +14,6 @@ require_once dirname(__FILE__).'/../lib/pictureGeneratorHelper.class.php';
 class pictureActions extends autoPictureActions {
 
 
-
 	public function executeNew(sfWebRequest $request) {
 		$this->form = $this->configuration->getForm();
 		$this->form->MultiplePictureForm();
@@ -43,19 +42,30 @@ class pictureActions extends autoPictureActions {
 	
 		if ( $form->isValid() ){
 	  
-			$file = $this->form->getValue('image');
-	  		$notice = $form->getObject()->isNew() ? 'The item was created successfully.' : 'The item was updated successfully.';
+			$file 	= $this->form->getValue('image');
+			$image = $this->form->getObject();
+	  		
+	  		$notice = $image->isNew() ? 'The item was created successfully.' : 'The item was updated successfully.';
 
 		  		try {
-
+		  			// Image
 		  			$filename 	= 'app_'  . sha1($file->getOriginalName() . rand(1,100) );
   					$extension 	= str_replace('.', '', $file->getOriginalExtension() );
-  					$file->save(sfConfig::get('sf_upload_dir') . DIRECTORY_SEPARATOR . $filename . $extension);			
+  					$path 		= sfConfig::get('sf_upload_dir') . DIRECTORY_SEPARATOR . $filename . '.'. $extension;
+  					$file->save($path);
+
+  					// Thumb 
+  					$img = new sfImage($path, 'image/jpg');
+  					$img->thumbnail(150,150);
+  					$img->saveAs(sfConfig::get('sf_upload_dir') . DIRECTORY_SEPARATOR . $filename . '_thumb' . '.'. $extension);
 		  			
-		  			$form->getObject()->path = $filename . '.' . $extension;
-		  			$form->getObject()->type = $extension;
-					
-					$picture = $form->save();
+		  			// Save 
+		  			$image->path 		= $filename . '.'. $extension;
+		  			$image->type 		= $extension;
+		  			$image->name 	= $request->getPostParameter('picture[name]');
+		  			$image->description 	= $request->getPostParameter('picture[description]');
+					$image->apartment_id 	= $request->getPostParameter('picture[apartment_id]');
+					$image->save();
 
 		  		      } catch (Doctrine_Validator_Exception $e) {
 
@@ -70,7 +80,7 @@ class pictureActions extends autoPictureActions {
 					return sfView::SUCCESS;
 		  		}
 
-			$this->dispatcher->notify(new sfEvent($this, 'admin.save_object', array('object' => $picture)));
+			// $this->dispatcher->notify(new sfEvent($this, 'admin.save_object', array('object' => $picture)));
 
 	
 		     } else {

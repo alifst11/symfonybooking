@@ -1,4 +1,7 @@
 
+
+
+
 <?php if( isset($errors) ): ?> 
 	
 	<div class="alert alert-error">	
@@ -8,6 +11,14 @@
 	</div>
 
     <?php else:  ?>
+
+
+
+    		<?php if( isset($by_period) ): ?>
+    		By perioddd !
+    	 	<?php else: ?>
+    	 	Narrow you search with period
+    		<?php endif; ?>
 
 	<div class="row">
 

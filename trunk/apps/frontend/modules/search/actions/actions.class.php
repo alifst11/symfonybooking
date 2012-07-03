@@ -44,16 +44,38 @@ class searchActions extends sfActions {
 	/* Search request  */
 	public function executeSearchRequest(sfWebRequest $request) {
 
-		$errors = LinkParser::ValidateSearchRequest($request);
+		if ( LinkParser::FilterByPeriod($request) ) {
 			
-			if ( count($errors) == 0 ) {
-				
-				$this->city 	= Doctrine_Core::getTable('City')->FindByNameLike($request->getParameter('city'));
-				$this->features 	= Doctrine_Core::getTable('Feature')->GetByIds( $request->getParameter('features') );
-		 		$this->apps 	= Doctrine_Core::getTable('Apartment')->getApartmentsByFeatures( $request->getParameter('features'), $this->city->getId() );	
-			} else {
-				$this->errors = $errors; 
-			}
+			$errors = LinkParser::ValidateSearchRequest($request, true);
+		     	$this->by_period = true;
+		      	$this->DoSearch($errors, $request);
+
+		       } else {
+
+			$errors = LinkParser::ValidateSearchRequest($request);
+			$this->DoSearch($errors, $request);
+		}
 	}
+
+
+	/*  Execute search and check errors */
+	protected function DoSearch($errors, sfWebRequest $request){
+		
+		if ( count($errors) == 0 ) {
+		     	$this->FetchResults($request);
+		       } else {
+			$this->errors = $errors; 
+		}
+	}
+
+
+	/* Fetch results for search parameters in $request */
+	protected function FetchResults(sfWebRequest $request){
+
+		$this->city 	= Doctrine_Core::getTable('City')->FindByNameLike($request->getParameter('city'));
+		$this->features 	= Doctrine_Core::getTable('Feature')->GetByIds( $request->getParameter('features') );
+		$this->apps 	= Doctrine_Core::getTable('Apartment')->getApartmentsByFeatures( $request->getParameter('features'), $this->city->getId() );	
+	}
+
 
 }
