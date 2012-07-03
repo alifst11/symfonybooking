@@ -42,7 +42,7 @@
 					<div class="span1">&nbsp;</div>
 					<div class="span1">
 						<br>
-						<a class="btn btn-primary btn-large" id="search_submit"><? echo( __('Search') )?></a>
+						<a class="btn btn-primary btn-large" id="search_submit"><?php echo( __('Search') )?></a>
 					</div>
 				</div>
 				

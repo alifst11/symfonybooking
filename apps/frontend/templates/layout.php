@@ -61,8 +61,8 @@
     		<div class="container">
 			<ul class="nav">
 			  <li><?php echo link_to('Home', @homepage) ?></li>
-			  <li><?php echo link_to('Profile', @profile_home) ?></li>
 			  <li><?php echo link_to('Search', @search_public) ?></li>
+                       <li><?php echo link_to('My reservations', @profile_home) ?></li>
 			</ul>
     		</div>
   	</div>

@@ -20,4 +20,5 @@ all:
       10: Brekfast
       11: Sea View
       12: Sat
+  sf_upload_dir: web/uploads
 
