@@ -14,7 +14,7 @@ class publicComponents extends sfComponents  {
 
 
 	/* Visited apartments */
-	public function executeVisitedapartments(sfWebRequest $request) {
+	public function executeVisitedApartments(sfWebRequest $request) {
 
 		$raw_apids  = $this->getUser()->getAttribute('apids');
 		$new_apids = $request->TrackVisitedApartments( $raw_apids );
@@ -37,6 +37,29 @@ class publicComponents extends sfComponents  {
 		$this->app = $ap;
 
 	}
+
+
+	public function executeShowSugestedApartments(sfWebRequest $request){
+
+		$ap = Doctrine_Core::getTable('Apartment')->find( $request->getParameter('id') );
+		$this->over_15 = false;
+
+		$ids = $ap->GetRawFeatureIds();
+		$sugested_apids = Doctrine_Core::getTable('ApartmentComparation')
+					->getAppIdsByAllFeatures( $ids, null );
+		
+		if ( count($sugested_apids) > 15 ) {
+			
+			array_splice($sugested_apids, 15);
+			$this->over_15 = true;
+		 } 
+
+		$this->apartments = Doctrine_Core::getTable('Apartment')
+					->GetApartmentsByIds($sugested_apids);
+
+	}	
+
+
 
 
 }

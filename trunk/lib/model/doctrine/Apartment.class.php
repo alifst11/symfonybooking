@@ -17,6 +17,18 @@ class Apartment extends BaseApartment {
 	}
 
 
+	public function GetRawFeatureIds() {
+
+		$features = $this->Feature;
+		$ids = array();
+
+		foreach ($features as $feature) {
+			
+			array_push($ids, $feature->getId());
+		}
+		return $ids;
+	}
+
 	public function BookedDates($date_from, $date_to) {
 
 		$app = Doctrine_Core::getTable('Apartment');

@@ -76,6 +76,16 @@ class ApartmentTable extends Doctrine_Table {
 	}
 
 
+	public function GetApartmentsByIds($apids){
+
+		$q = $this->createQuery('a')
+			   ->leftJoin('a.City')
+			   ->whereIn('a.id', $apids);
+
+		return  $q->execute();
+	}
+
+
 	/**
 	 * Returns an instance of this class.
 	 *
