@@ -137,20 +137,20 @@
         <target>Nepotvrđeno</target>
       </trans-unit>
       <trans-unit id="35">
-        <source>Hi ! Login with Facebook and share with friends ...</source>
-        <target>Pozdrav ! Log</target>
+        <source>Hi Facebook user !</source>
+        <target>Pozdrav Facebook korisnik ! </target>
       </trans-unit>
       <trans-unit id="36">
         <source>Apartments in  </source>
-        <target/>
+        <target>Apartmani u </target>
       </trans-unit>
       <trans-unit id="37">
         <source>Things you want</source>
-        <target/>
+        <target>Karakteristike koje želiš</target>
       </trans-unit>
       <trans-unit id="38">
         <source>Things you dont need</source>
-        <target/>
+        <target>Karakteristike koje ne želiš</target>
       </trans-unit>
       <trans-unit id="39">
         <source>Registration</source>
@@ -187,6 +187,22 @@
       <trans-unit id="47">
         <source>Visited apartments</source>
         <target/>
+      </trans-unit>
+      <trans-unit id="48">
+        <source>Croatian</source>
+        <target>Hrvatski</target>
+      </trans-unit>
+      <trans-unit id="49">
+        <source>English</source>
+        <target>Engleski</target>
+      </trans-unit>
+      <trans-unit id="50">
+        <source>Top Destinations</source>
+        <target>Top Destinacije</target>
+      </trans-unit>
+      <trans-unit id="51">
+        <source>Latest units</source>
+        <target>Najnoviji objekti</target>
       </trans-unit>
     </body>
   </file>

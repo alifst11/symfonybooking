@@ -41,7 +41,7 @@ $(document).ready(function() {
 			  	var link = ('&' + ('_' + arr[i]['id'] ) + '=f');
 			  	$("#explore_link").attr("href", oldlink +  link );
 			  	arr.splice(i,1);
-			  	break; /* bugovi */
+			  	break;
 			    	}
 		 } 
 			// console.log('Features count: ', arr.length, ' Removed: ', id );
@@ -49,10 +49,10 @@ $(document).ready(function() {
 				
                 	<?php $num = 0; ?>
 	<?php foreach($apfeatures as $apfeature): ?>
-                      		
                       		$('#<?php echo $apfeature['id'] ?>').bind('closed', function () {
                       			 buildLink(arr,<?php echo $apfeature['id'] ?>); 
 			})
               	<?php $num++; ?>
 	<?php endforeach ?>
+	
 </script>

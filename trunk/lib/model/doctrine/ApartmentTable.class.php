@@ -34,7 +34,7 @@ class ApartmentTable extends Doctrine_Table {
 	}
 
 
-	/* Returns Bookings beetween two dates*/
+	/* Returns Bookings beetween two dates */
 	public function BookingsBeetweenDates($app_id, $date_from, $date_to) {
 		  
 		 $q = Doctrine_Core::getTable('Booking')->createQuery('a')

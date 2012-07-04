@@ -12,6 +12,12 @@ class publicComponents extends sfComponents  {
 
 	}
 
+	/* Language switch */
+	public function executeLanguageSelect(sfWebRequest $request){
+
+
+	}
+
 
 	/* Visited apartments */
 	public function executeVisitedApartments(sfWebRequest $request) {
@@ -32,9 +38,8 @@ class publicComponents extends sfComponents  {
 	/* Sugested appartments */
 	public function executeSugestionStart(sfWebRequest $request) {
 
-		$ap = Doctrine_Core::getTable('Apartment')->find( $request->getParameter('id') );
-		$this->apfeatures = $ap->Feature;
-		$this->app = $ap;
+		$this->app = Doctrine_Core::getTable('Apartment')->find( $request->getParameter('id') );
+		$this->apfeatures = $this->app->Feature;
 
 	}
 
