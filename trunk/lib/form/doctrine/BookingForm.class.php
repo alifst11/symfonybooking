@@ -12,6 +12,7 @@ class BookingForm extends BaseBookingForm {
   
 	public function configure() {
 		unset( $this['price']  );
+		$this->validatorSchema->setPostValidator(new sfValidatorCallback( array('callback' => array($this, 'CheckBooking')) ));
 	}
 
 
@@ -49,5 +50,52 @@ class BookingForm extends BaseBookingForm {
 			
 		));
 	}
+
+
+
+	public function CheckBooking($validator, $values) {
+		 // Additionaly validation
+		 // Access to form items using  $values['value_name'];
+		 $apartment = Doctrine_Core::getTable('Apartment')->find($values['apartment_id']);
+		 $periods = $apartment->Period;
+
+		 $error_schema 	= new sfValidatorErrorSchema($validator);
+
+		 $date_error      	= new sfValidatorError($validator, 'Dates are in past or invalid ! Date must be in future.' );
+		 $idiot_date_error 	= new sfValidatorError($validator, 'Catastropic failure. This date cannot be before start date' );
+
+			  /* Dates are in past for date_from ?! */
+			 if ( (strtotime($values['date_from']) < time()) ) {
+					$error_schema->addError($date_error , 'date_from');
+			 }
+
+			  /* Dates are in past for date_to ?! */
+			 if ( (strtotime($values['date_to']) < time()) ) {
+					$error_schema->addError($date_error , 'date_to');
+			 }
+
+			 /* date_from has to be greater than date_to future*/
+		  
+		  	if ( (strtotime($values['date_from']) > strtotime($values['date_to'])) ) {
+					$error_schema->addError($idiot_date_error , 'date_to');
+			 }
+
+
+		 throw  $error_schema;
+		 return $values;
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

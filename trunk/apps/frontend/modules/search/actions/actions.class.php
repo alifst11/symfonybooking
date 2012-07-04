@@ -48,7 +48,7 @@ class searchActions extends sfActions {
 			
 			$errors = LinkParser::ValidateSearchRequest($request, true);
 		     	$this->by_period = true;
-		      	$this->DoSearch($errors, $request);
+		      	$this->DoSearch($errors, $request, true);
 
 		       } else {
 
@@ -59,22 +59,38 @@ class searchActions extends sfActions {
 
 
 	/*  Execute search and check errors */
-	protected function DoSearch($errors, sfWebRequest $request){
+	protected function DoSearch($errors, sfWebRequest $request, $by_period=false){
 		
-		if ( count($errors) == 0 ) {
+		if ( count($errors) == 0 && $by_period === false ) {
+		     	
 		     	$this->FetchResults($request);
+		     
+		       } elseif (count($errors) == 0 && $by_period) {
+			
+			$this->FetchResults($request, true);
+
 		       } else {
+
 			$this->errors = $errors; 
 		}
 	}
 
 
 	/* Fetch results for search parameters in $request */
-	protected function FetchResults(sfWebRequest $request){
+	protected function FetchResults(sfWebRequest $request, $by_period = false){
 
 		$this->city 	= Doctrine_Core::getTable('City')->FindByNameLike($request->getParameter('city'));
 		$this->features 	= Doctrine_Core::getTable('Feature')->GetByIds( $request->getParameter('features') );
-		$this->apps 	= Doctrine_Core::getTable('Apartment')->getApartmentsByFeatures( $request->getParameter('features'), $this->city->getId() );	
+		
+		if ($by_period) {
+			
+			$apps 		= Doctrine_Core::getTable('Apartment')->getApartmentsByFeatures( $request->getParameter('features'), $this->city->getId() );	
+			$this->apps 	= Apartment::AvalibilityInPeriod($apps, $request->getParameter('date_from'), $request->getParameter('date_to'));
+		     
+		      } else {
+			$this->apps 	= Doctrine_Core::getTable('Apartment')->getApartmentsByFeatures( $request->getParameter('features'), $this->city->getId() );	
+		}
+		
 	}
 
 

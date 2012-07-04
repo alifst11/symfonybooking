@@ -20,9 +20,21 @@
         <?php echo link_to ( 'Periods' , @period) ?> | 
         <?php echo link_to ( 'Features' , @feature) ?> | 
         <?php echo link_to ( 'Bookings' , @booking) ?> | 
-        <?php echo link_to ( 'Cities' , @city) ?>
+        <?php echo link_to ( 'Cities' , @city) ?> || 
+        <?php echo link_to ( 'Log-out' , @sf_guard_signout) ?>
+
     </div>
    <?php endif; ?>
+               <?php if ($sf_user->hasFlash('notice')): ?>
+                        <div class="alert alert-error">
+                            <?php echo $sf_user->getFlash('notice') ?>
+                        </div>
+                        <script type="text/javascript">
+                            jQuery(document).ready(function($) {
+                              $('.alert').fadeOut(7000);
+                               });
+                        </script>
+            <?php endif; ?>
    <?php echo $sf_content ?>
   </div>
   </body>  
