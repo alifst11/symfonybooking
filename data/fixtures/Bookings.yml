@@ -6,3 +6,10 @@ Booking:
     date_to: '2012-07-10'
     pax: 2
     price: 600
+  Booking_2:
+    Apartment: Apartment_1
+    Client: User_client_1
+    date_from: '2012-08-15'
+    date_to: '2012-08-24'
+    pax: 2
+    price: 1200

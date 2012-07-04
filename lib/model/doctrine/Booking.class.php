@@ -104,4 +104,6 @@ class Booking extends BaseBooking {
 		return $price;
 	}
 
+
+
 }

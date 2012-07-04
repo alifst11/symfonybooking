@@ -42,15 +42,17 @@ class bookingActions extends autoBookingActions {
 
 						$from  = ( $params['date_from']['year'] . '-' . $params['date_from']['month'] . '-' . $params['date_from']['day']);
 						$to      = ( $params['date_to']['year'] . '-' . $params['date_to']['month'] . '-' . $params['date_to']['day']);
-							/* Smeće odi i gori i doli   */
+							
 						$booking->date_from = $from;
 						$booking->date_to = $to;				 
 
 							if ( $booking->StartBooking($apartment, $params['pax']) ) {
 									
-								$booking->Apartment  = $apartment;
-								$booking->client_id     = $params['client_id'];
-								$booking->pax            = $params['pax'];
+								$booking->Apartment  	= $apartment;
+								$booking->client_id     	= $params['client_id'];
+								$booking->pax            	= $params['pax'];
+								$booking->valid 	=$params['valid'];
+								$booking->canceled 	=$params['canceled'];
 								$booking->price          = Booking::CalculatePrice($apartment, $from, $to);
 								$booking->save();
 																	 

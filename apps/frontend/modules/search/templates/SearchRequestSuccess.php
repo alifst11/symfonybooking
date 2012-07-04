@@ -15,7 +15,7 @@
 
 
     		<?php if( isset($by_period) ): ?>
-    		By perioddd !
+    		Apartments avalible in searched period...
     	 	<?php else: ?>
     	 	Narrow you search with period
     		<?php endif; ?>
