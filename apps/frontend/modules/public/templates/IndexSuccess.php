@@ -8,7 +8,7 @@
 			<?php echo('Find my location & search') ?>
 		</a>
 		<a class="btn" id="show_text">
-			<?php echo('Reset') ?>
+			<?php echo('Show what disappeared') ?>
 		</a>
 	</p>
 </div>
@@ -17,14 +17,14 @@
 <div class="row" id="home_content">
 	
 	<div class="span3">
-		 <h4><?php echo( __('Top cities by Apartments') ) ?></h4><hr>
+		 <h4><?php echo( __('Top Destinations') ) ?></h4><hr>
 		 <?php foreach ($cities as $city): ?>
 		 	<h1><?php  echo($city->count ) ?> <?php  echo(link_to($city->getName(), @apartments_city, array('id'=>$city->getId()), array() )) ?></h1>
 		<?php endforeach; ?>
 	</div>
 
 	<div class="span5">
-		<h4><?php echo( __('Latest added') ) ?></h4><hr>
+		<h4><?php echo( __('Latest units') ) ?></h4><hr>
 		<?php  include_partial('public/apartment_list', array('apartments' => $apartments, 'show_city' => true)) ?>
 	</div>
 </div>
@@ -114,8 +114,7 @@
 
 	$(document).ready(function() {
 		
-		$('#map_stuff').hide();
-		$("#ajxloader").hide();
+		$('#map_stuff, #ajxloader, #show_text').hide();
 
 		$('#show_text').click(function() {
 			$('#home_content').fadeIn(600);
@@ -124,6 +123,8 @@
 
 		$('#find_location').click(function() { 
 			
+			$('#show_text').fadeIn(600);
+
 			// Is geolocation supported?
 			if(navigator.geolocation) {
 				

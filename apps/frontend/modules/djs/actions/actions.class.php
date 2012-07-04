@@ -28,4 +28,14 @@ class djsActions extends sfActions{
 		return ".js";
 	}
 
+
+	public function executeChangeCulture(sfWebRequest $request){
+
+		$oldCulture = $this->getUser()->getCulture();
+		$newCulture = $request->getParameter("language");
+		$this->getUser()->setCulture($newCulture);
+		return $this->redirect(str_replace('/' . $oldCulture, '/' . $newCulture, $request->getParameter("redirect")));
+	}
+
+
 }

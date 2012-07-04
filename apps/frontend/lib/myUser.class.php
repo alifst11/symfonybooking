@@ -12,9 +12,9 @@ class myUser extends sfGuardSecurityUser {
 	public static function getFacebook() {
 			if (null === self::$facebook) {
 				self::$facebook = new Facebook(array(
-							 'appId'   => '232000500251089',
-			'secret' => 'c2b3756172017ab8052d364b70e5babc'
-						));
+					'appId'   => '232000500251089',
+					'secret' => 'c2b3756172017ab8052d364b70e5babc'
+					));
 			}
 			return self::$facebook;
 	}

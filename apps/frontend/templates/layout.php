@@ -86,11 +86,10 @@
               <div id="sidebar">
                     <?php if (has_slot('sidebar')): ?>
                         <?php include_slot('sidebar') ?>
-                        <?php include_component('public', 'AccountStatus') ?>
-                    <?php else: ?>
-                        <p>Defaultne informacije u sidebaru</p>
-                        <?php include_component('public', 'AccountStatus') ?>
                     <?php endif; ?>
+                    <?php include_component('public', 'LanguageSelect') ?>
+                        <br><br>
+                    <?php include_component('public', 'AccountStatus') ?>
               </div>
           </div>
 	</div>

@@ -85,7 +85,7 @@ class publicActions extends sfActions {
 	/* APARTMENT SINGLE  */
 	public function executeShowApartment(sfWebRequest $request) {
 
-		$this->forward404Unless($app = $this->apartment  = Doctrine_Core::getTable('apartment')->find($request->getParameter('id')), sprintf('Object category does not exist (%s).', $request->getParameter('id')));
+		$this->forward404Unless($app = $this->apartment  = Doctrine_Core::getTable('Apartment')->find($request->getParameter('id')), sprintf('Object category does not exist (%s).', $request->getParameter('id')));
 
 		$this->periods = $app->Period;
 		$this->images = $app->Pictures;

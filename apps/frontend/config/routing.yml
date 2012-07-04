@@ -69,6 +69,10 @@ json_dates:
 
 
 # ______________________________
+change_culture:
+  url: /cc/:language
+  param: {module: djs, action: ChangeCulture}
+
 search_public:
   url: /:sf_culture/search
   param: {module: search, action: Search}
